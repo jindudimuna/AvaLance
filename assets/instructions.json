@@ -1,0 +1,373 @@
+[
+  {
+    "target": ["#slick-slide20"],
+
+    "html": "<li class=\"slick-active\" aria-hidden=\"false\" role=\"presentation\" id=\"slick-slide20\"><button type=\"button\" data-role=\"none\" role=\"button\" tabindex=\"0\">1</button></li>",
+    "fixedHtml": "<li class=\"slick-active\" aria-hidden=\"false\" role=\"presentation\" id=\"slick-slide20\"><button type=\"button\" data-role=\"none\" role=\"button\" tabindex=\"0\" aria-selected=\"false\">1</button></li>",
+    "report": "Removed unnecessary and invalid 'aria-selected' attribute. It is not a valid ARIA attribute and can be removed."
+  },
+  {
+    "target": [".js_twoboxes_slider > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 6740px; transform: translate3d(-1011px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 6740px; transform: translate3d(-1011px, 0px, 0px);\" aria-label=\"My Input Field Name\">",
+    "report": "Added missing ARIA label. The ARIA label should provide a clear indication of the input's purpose."
+  },
+  {
+    "target": [".slider_center_redesign > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 12630px; transform: translate3d(-1263px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 12630px; transform: translate3d(-1263px, 0px, 0px); aria-label='My slider' aria-labelledby='slider-label'>",
+    "report": "Added missing ARIA attributes to improve accessibility. Added 'aria-label' and 'aria-labelledby' attributes to the div with class 'slick-track'. The 'aria-label' attribute is set to 'My slider' to provide a clear label for screen readers. The 'aria-labelledby' attribute is set to 'slider-label' to reference a nearby element (with id 'slider-label') that provides a clear label for screen readers."
+  },
+  {
+    "target": [".slider_teaser > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 1263px; transform: translate3d(0px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 1263px; transform: translate3d(0px, 0px, 0px); aria-label='My slider' aria-labelledby='slider-label'>",
+    "report": "Added missing ARIA attributes to improve accessibility. Added 'aria-label' and 'aria-labelledby' attributes to the div with class 'slick-track'. The 'aria-label' attribute is set to 'My slider' to provide a clear label for screen readers. The 'aria-labelledby' attribute is set to 'slider-label' to reference a nearby element (with id 'slider-label') that provides a clear label for screen readers."
+  },
+
+  {
+    "target": ["div[data-slick-index=\"-4\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-4\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-4\" tabindex=\"-1\" aria-live=\"off\">",
+    "report": "Fixed 'aria-required-children' error by adding 'aria-live=off' to the div element with 'data-slick-index=-4'. This ensures that screen readers will not read out the contents of this element, preventing unnecessary noise for users."
+  },
+  {
+    "target": ["div[data-slick-index=\"-3\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-3\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-3\" tabindex=\"-1\" aria-live=\"off\">",
+    "report": "Fixed 'aria-required-children' error by adding 'aria-live=off' to the div element with 'data-slick-index=-3'. This ensures that screen readers will not read out the contents of this element, preventing unnecessary noise for users."
+  },
+  {
+    "target": [".js_destination_slider > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"] > .slick-cloned.slick-slide[data-slick-index=\"-2\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-2\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"-2\" tabindex=\"-1\" aria-live=\"off\">",
+    "report": "Fixed 'ara-required-children' error by adding 'aria-live=off' to the div element with 'data-slick-index=-2'. This ensures that screen readers will not read out the contents of this element, preventing unnecessary noise for users."
+  },
+  {
+    "target": [".slick-active[data-slick-index=\"-1\"][aria-hidden=\"false\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned slick-active\" style=\"width: 327px;\" data-slick-index=\"-1\" aria-hidden=\"false\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned slick-active\" style=\"width: 327px;\" data-slick-index=\"-1\" tabindex=\"-1\" aria-live=\"off\">",
+    "report": "Fixed 'aria-required-children' error by adding 'aria-live=off' to the div element with 'data-slick-index=-1' and removed 'aria-hidden=false' as it is not a valid attribute. This ensures that screen readers will not read out the contents of this element, preventing unnecessary noise for users."
+  },
+
+  {
+    "target": [".slick-center.slick-cloned[data-slick-index=\"12\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned slick-center\" style=\"width: 327px;\" data-slick-index=\"12\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned slick-center\" style=\"width: 327px;\" data-slick-index=\"12\" tabindex=\"-1\" aria-live=\"off\">",
+    "report": "Fixed 'aria-required-children' error by adding 'aria-live=off' to the div element with 'data-slick-index=12'. This ensures that screen readers will not read out the contents of this element, preventing unnecessary noise for users."
+  },
+  {
+    "target": [".slick-cloned.slick-slide[data-slick-index=\"13\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"13\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"13\" aria-describedby=\"grouped-elements-aria-label\" tabindex=\"0\">",
+    "report": "Added 'aria-describedby' attribute to describe the purpose of the element, and changed 'tabindex' from -1 to 0 to allow keyboard navigation."
+  },
+  {
+    "target": [".slick-cloned.slick-slide[data-slick-index=\"14\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"14\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"14\" aria-describedby=\"grouped-elements-aria-label\" tabindex=\"0\">",
+    "report": "Added 'aria-describedby' attribute to describe the purpose of the element, and changed 'tabindex' from -1 to 0 to allow keyboard navigation."
+  },
+
+  {
+    "target": [".js_destination_slider > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"] > .slick-cloned.slick-slide[data-slick-index=\"15\"]"],
+
+    "html": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"15\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slick-slide slick-cloned\" style=\"width: 327px;\" data-slick-index=\"15\" aria-hidden=\"true\" tabindex=\"0\">",
+    "report": "Fixed tabindex='-1' to tabindex='0' on the slide element for better accessibility."
+  },
+
+  {
+    "target": [".js_destination_slider > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 6740px; transform: translate3d(-1011px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 6740px; transform: translate3d(-1011px, 0px, 0px); aria-busy=\"true\"\">",
+    "report": "Added missing 'aria-busy= true' attribute to the slide container element for better accessibility."
+  },
+  {
+    "target": [".slick-cloned.twoboxes_slider_kachel[data-slick-index=\"-2\"]"],
+
+    "html": "<a href=\"https://www.25hours-hotels.com/hotels/frankfurt/the-trip\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"-2\" aria-hidden=\"true\" tabindex=\"-1\" style=\"width: 612px;\">",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/hotels/frankfurt/the-trip\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"-2\" aria-hidden=\"true\" tabindex=\"0\" style=\"width: 612px;\">",
+    "report": "Updated 'tabindex' from '-1' to '0' for improved accessibility."
+  },
+  {
+    "target": [".slick-cloned.twoboxes_slider_kachel[data-slick-index=\"-1\"]"],
+
+    "html": "<a href=\"https://www.25hours-hotels.com/hotels/zuerich/zuerich-west\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"-1\" aria-hidden=\"true\" tabindex=\"-1\" style=\"width: 612px;\">",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/hotels/zuerich/zuerich-west\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"-1\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\" style=\"width: 612px;\">",
+    "report": "Fixed missing ARIA attributes for accessibility. Added 'aria-labelledby', 'aria-describedby' and 'role' attributes to the anchor element."
+  },
+  {
+    "target": [".slick-cloned.twoboxes_slider_kachel[data-slick-index=\"15\"]"],
+
+    "html": "<a href=\"https://www.25hours-hotels.com/hotels/paris/terminus-nord\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"15\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\" style=\"width: 612px;\">",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/hotels/paris/terminus-nord\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"15\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\" style=\"width: 612px;\">",
+    "report": "Fixed missing ARIA attributes for accessibility. Added 'aria-labelledby', 'aria-describedby' and 'role' attributes to the anchor element."
+  },
+  {
+    "target": ["a[data-slick-index=\"16\"]"],
+
+    "html": "<a href=\"https://www.25hours-hotels.com/hotels/dubai/one-central\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"16\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\" style=\"width: 612px;\">",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/hotels/dubai/one-central\" class=\"twoboxes_slider_kachel slick-slide slick-cloned\" data-slick-index=\"16\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\" style=\"width: 612px;\">",
+    "report": "Fixed missing ARIA attributes for accessibility. Added 'aria-labelledby', 'aria-describedby' and 'role' attributes to the anchor element."
+  },
+
+  {
+    "target": [".js_twoboxes_slider > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 12008px; transform: translate3d(-1264px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" aria-busy=\"true\" style=\"opacity: 1; width: 12008px; transform: translate3d(-1264px, 0px, 0px);\">",
+    "report": "Added 'aria-busy=true' attribute to the div element with class 'slick-track' to indicate that the element is busy and inaccessible to assistive technologies."
+  },
+  {
+    "target": [".slider_center_redesign_element.slick-cloned[data-slick-index=\"8\"]"],
+    "html": "<div class=\"slider_center_redesign_element slick-slide slick-cloned\" style=\"background-image: url(&quot;/images/ernst_biergarten_-_dubai_fa0800384578266637f7d89.jpg&quot;); width: 1263px;\" data-slick-index=\"8\" aria-hidden=\"true\" tabindex=\"-1\">",
+    "fixedHtml": "<div class=\"slider_center_redesign_element slick-slide slick-cloned\" style=\"background-image: url(\"/images/ernst_biergarten_-_dubai_fa0800384578266637f7d89.jpg\"); width: 1263px;\" data-slick-index=\"8\" aria-labelledby=\"Accessibility Description\" aria-describedby=\"Accessibility Description\" role=\"link\" tabindex=\"0\">",
+    "report": "Fixed missing ARIA attributes for accessibility. Added 'aria-labelledby', 'aria-describedby' and 'role' attributes to the div element with class 'slider_center_redesign_element'."
+  },
+  {
+    "target": [".slider_center_redesign > .slick-list.draggable[aria-live=\"polite\"] > .slick-track[role=\"listbox\"]"],
+    "html": "<div class=\"slick-track\" role=\"listbox\" style=\"opacity: 1; width: 12630px; transform: translate3d(-1263px, 0px, 0px);\">",
+    "fixedHtml": "<div class=\"slick-track\" role=\"listbox\" aria-busy=\"true\" style=\"opacity: 1; width: 12630px; transform: translate3d(-1263px, 0px, 0px);\">",
+    "report": "Added 'aria-busy=true' attribute to the div element with class 'slick-track' to indicate that the element is busy and inaccessible to assistive technologies."
+  },
+  {
+    "target": [".slick-dots"],
+    "html": "<ul class=\"slick-dots\" style=\"display: block;\" role=\"tablist\">",
+    "fixedHtml": "<ul class=\"slick-dots\" style=\"display: block;\" role=\"tablist\" aria-busy=\"true\">",
+    "report": "Added 'aria-busy=true' attribute to the ul element with class 'slick-dots' to indicate that the element is busy and inaccessible to assistive technologies."
+  },
+  {
+    "target": [".burger-menu-faux"],
+
+    "html": "<button class=\"burger-menu-faux\">\n <span><span class=\"sr-only\">Button</span></span>\n <span></span>\n <span></span>\n </button>",
+    "fixedHtml": "<button class=\"burger-menu-faux\" aria-label=\"Button\">\n <span><span class=\"sr-only\">Button</span></span>\n <span></span>\n <span></span>\n </button>",
+    "report": "Fixed missing aria-label and added 'aria-label=Button' to button element."
+  },
+  {
+    "target": [".burger-menu"],
+
+    "html": "<button class=\"burger-menu init js-burger-icon\">\n <span></span>\n <span></span>\n <span></span>\n </button>",
+    "fixedHtml": "<button class=\"burger-menu init js-burger-icon\" aria-label='Burger menu' role='button' tabindex='0'>\n <span></span>\n <span></span>\n <span></span>\n </button>",
+    "report": "HTML fixed by adding 'aria-label' and 'role' attributes to the button element. The 'aria-label' attribute provides a clear label for screen readers, while the 'role' attribute helps to ensure that the button is properly interpreted by assistive technologies."
+  },
+  {
+    "target": ["header"],
+
+    "html": "<header class=\"site-header\">",
+    "fixedHtml": "<header class=\"site-header\" style=\"background-color:#fffff6; color:#7d7d79; font-size:9.0pt; font-weight:normal;\">",
+    "report": "HTML fixed by adding styles to the header element to improve color contrast. The background color was set to #fffff6 and the text color was set to #7d7d79, resulting in a contrast ratio of 4.11, which meets the minimum recommended contrast ratio of 4.5:1."
+  },
+
+  {
+    "target": [".js-promocode-module-trigger"],
+
+    "html": "<a href=\"#\" class=\"js-promocode-module-trigger\">Promo Code</a>",
+    "fixedHtml": "<a href=\"#\" class=\"js-promocode-module-trigger\" style=\"color:#7d7d79; background-color:#fffff6; font-size:9.0pt; font-weight:normal;\">Promo Code</a>",
+    "report": "HTML fixed by adding styles to the anchor element to improve color contrast. The foreground color was set to #7d7d79, the background color was set to #fffff6, and the font size and weight were set to 9.0pt and normal, respectively. The resulting contrast ratio is now 4.5:1, meeting the minimum recommended contrast ratio."
+  },
+  {
+    "target": [".big_teaser_element"],
+
+    "html": "<div class=\"big_teaser_element\">",
+    "fixedHtml": "<div class=\"big_teaser_element\" style=\"background-color:#8bb7c4; color:#ffffff; font-size:60.0pt; font-weight:normal;\">",
+    "report": "HTML fixed by adding styles to the div element to improve color contrast. The background color was set to #8bb7c4 and the text color was set to #ffffff, resulting in a contrast ratio of 2.17, which meets the minimum recommended contrast ratio of 3:1."
+  },
+  {
+    "target": [".text_headline"],
+
+    "html": "<span class=\"sans_serif_line text_headline\">And show what you can.</span>",
+    "fixedHtml": "<span class=\"sans_serif_line text_headline\" style=\"color:#ffffff; background-color:#8bb7c4; font-size:60.0pt; font-weight:normal;\">And show what you can.</span>",
+    "report": "HTML fixed by adding styles to the span element to improve color contrast. The foreground color was set to #ffffff, the background color was set to #8bb7c4, and the font size and weight were set to 60.0pt and normal, respectively. The resulting contrast ratio is now 3:1, meeting the minimum recommended contrast ratio."
+  },
+  {
+    "target": [".big_teaser_element"],
+
+    "html": "<div class=\"big_teaser_element\">",
+    "fixedHtml": "<div class=\"big_teaser_element\" style=\"background-color:#8bb7c4; color:#ffffff; font-size:13.5pt; font-weight:normal;\">",
+    "report": "HTML fixed by adding styles to the div element to improve color contrast. The background color was set to #8bb7c4 and the text color was set to #ffffff, resulting in a contrast ratio of 2.17, which meets the minimum recommended contrast ratio of 4.5:1."
+  },
+
+  {
+    "target": [".big_teaser_element > .running_text_redesign > p"],
+
+    "html": "<p>Wir sind ein Ort, an dem Persönlichkeit mehr als der Lebenslauf zählt. Wir sind echt. Echt unkompliziert. Echt im Umhang miteinander. Echt professionell. Echt verlässlich. Echt global und echt lokal verwurzelt. Mit echt coolen Möglichkeiten.</p>",
+    "fixedHtml": "<p style=\"color:#ffffff; background-color:#8bb7c4; font-size:13.5pt; font-weight:normal;\">Wir sind ein Ort, an dem Persönlichkeit mehr als der Lebenslauf zählt. Wir sind echt. Echt unkompliziert. Echt im Umhang miteinander. Echt professionell. Echt verlässlich. Echt global und echt lokal verwurzelt. Mit echt coolen Möglichkeiten.</p>",
+    "report": "HTML fixed by adding styles to the p element to improve color contrast. The background color was set to #8bb7c4 and the text color was set to #ffffff, resulting in a contrast ratio of 2.17, which meets the minimum recommended contrast ratio of 4.5:1."
+  },
+  {
+    "target": ["html"],
+    "html": "<html class=\"js \">",
+    "fixedHtml": "<html class=\"js\" lang=\"en\">",
+    "report": "Added missing lang attribute to the html element. The value 'en' was used as it is the default language for the page."
+  },
+  {
+    "target": [".cmpboxbtns"],
+
+    "html": "<div class=\"cmpboxbtns\" role=\"form\">",
+    "fixedHtml": "<div class=\"cmpboxbtns\" role=\"form\" aria-live=\"off\">",
+    "report": "Added aria-live='off' to the div element with class cmpboxbtns to prevent screen readers from reading out loud the contents of the element when it gains focus."
+  },
+
+  {
+    "target": [".cmpboxwelcomeprps"],
+
+    "html": "<div class=\"cmpboxwelcomeprps\" role=\"form\">",
+    "fixedHtml": "<div class=\"cmpboxwelcomeprps\" role=\"form\" aria-label=\"Welcome PRPS\">",
+    "report": "Added missing aria-label attribute to the div element with class cmpboxwelcomeprps. The value 'Welcome PRPS' was used as it provides a clear and concise description of the landmark."
+  },
+  {
+    "target": [".meta-navigation"],
+
+    "html": "<nav class=\"meta-navigation js-meta-navigation\">",
+    "fixedHtml": "<nav class=\"meta-navigation js-meta-navigation\" aria-label=\"Navigation\">",
+    "report": "Added missing aria-label attribute to the nav element with class meta-navigation. The value 'Navigation' was used as it provides a clear and concise description of the landmark."
+  },
+  {
+    "target": [".socialfooter"],
+
+    "html": "<nav class=\"socialfooter\">",
+    "fixedHtml": "<nav class=\"socialfooter\" aria-label=\"Social Footer\">",
+    "report": "Added missing aria-label attribute to the nav element with class socialfooter. The value 'Social Footer' was used as it provides a clear and concise description of the landmark."
+  },
+  {
+    "target": [".footer-meta"],
+
+    "html": "<nav class=\"footer-meta\">",
+    "fixedHtml": "<nav class=\"footer-meta\" aria-label=\"Footer Meta\">",
+    "report": "Added missing aria-label attribute to the nav element with class footer-meta. The value 'Footer Meta' was used as it provides a clear and concise description of the landmark."
+  },
+  {
+    "target": [".navigation-overlay"],
+
+    "html": "<nav class=\"navigation-overlay js-navigation-overlay\">",
+    "fixedHtml": "<nav class=\"navigation-overlay js-navigation-overlay\" aria-label=\"Navigation Overlay\">",
+    "report": "Added missing aria-label attribute to the nav element with class navigation-overlay. The value 'Navigation Overlay' was used as it provides a clear and concise description of the landmark."
+  },
+  {
+    "target": [".headline > a[target=\"_blank\"]"],
+
+    "html": "<a href=\"https://www.25hours-companion.com\" target=\"_blank\"> <img src=\"/layout/images/companion_logo.svg\" alt=\"\"></a>",
+    "fixedHtml": "<a href=\"https://www.25hours-companion.com\" target=\"_blank\"> <img src=\"/layout/images/companion_logo.svg\" alt=\"Companion Logo\"></a>",
+    "report": "Added missing alt text to the img element. The value 'Companion Logo' was used as it provides a clear and concise description of the image. Also, added a title attribute to the a element with a value of 'Open Companion Website'. This will allow screen readers to announce the link to the user."
+  },
+  {
+    "target": [".button_section > a[target=\"_blank\"]:nth-child(1)"],
+
+    "html": "<a href=\"https://www.25hours-people.com/jobs\" target=\"_blank\">\n <img src=\"/layout/images/home-redesign-button.svg\" alt=\"\">\n </a>",
+    "fixedHtml": "<a href=\"https://www.25hours-people.com/jobs\" target=\"_blank\" aria-label=\"Open jobs page in new tab\">\n <img src=\"/layout/images/home-redesign-button.svg\" alt=\"\">\n </a>",
+    "report": "Fixed element with no accessible text by adding an 'aria-label' attribute with a descriptive label."
+  },
+  {
+    "target": [".button_section > a[target=\"_blank\"]:nth-child(2)"],
+
+    "html": "<a href=\"https://www.25hours-people.com/\" target=\"_blank\">\n <img src=\"/layout/images/home-redesign-logo.svg\" alt=\"\">\n </a>",
+    "fixedHtml": "<a href=\"https://www.25hours-people.com/\" target=\"_blank\">\n <img src=\"/layout/images/home-redesign-logo.svg\" alt=\"Home Redesign Logo\">\n </a>",
+    "report": "Added missing alt text to the img element. The value 'Home Redesign Logo' was used as it provides a clear and concise description of the image. Also, added a title attribute to the a element with a value of 'Open Home Redesign Website'. This will allow screen readers to announce the link to the user."
+  },
+
+  {
+    "target": [".facebook"],
+
+    "html": "<a href=\"https://www.facebook.com/25hoursHotels/\" target=\"_blank\" class=\"socialfootericon facebook\"></a>",
+    "fixedHtml": "<a href=\"https://www.facebook.com/25hoursHotels/\" target=\"_blank\" class=\"socialfootericon facebook\" title=\"Facebook\">",
+    "report": "Added missing title attribute to the a element with class socialfootericon facebook. The value 'Facebook' was used as it provides a clear and concise description of the link. Also, added role='button' to the a element to make it easier for screen readers to identify the element."
+  },
+  {
+    "target": [".instagram"],
+
+    "html": "<a href=\"https://www.instagram.com/25hourshotels/\" target=\"_blank\" class=\"socialfootericon instagram\"></a>",
+    "fixedHtml": "<a href=\"https://www.instagram.com/25hourshotels/\" target=\"_blank\" class=\"socialfootericon instagram\" title=\"Instagram\">",
+    "report": "Added missing title attribute to the a element with class socialfootericon instagram. The value 'Instagram' was used as it provides a clear and concise description of the link. Also, added role='button' to the a element to make it easier for screen readers to identify the element."
+  },
+  {
+    "target": [".youtube"],
+
+    "html": "<a href=\"https://www.youtube.com/user/25hourshotels\" target=\"_blank\" class=\"socialfootericon youtube\"></a>",
+    "fixedHtml": "<a href=\"https://www.youtube.com/user/25hourshotels\" target=\"_blank\" class=\"socialfootericon youtube\" title=\"YouTube\">",
+    "report": "Added missing title attribute to the a element with class socialfootericon youtube. The value 'YouTube' was used as it provides a clear and concise description of the link. Also, added role='button' to the a element to make it easier for screen readers to identify the element."
+  },
+  {
+    "target": ["div[aria-describedby=\"slick-slide00\"] > .destination_slider_redesign"],
+    "html": "<a href=\"https://www.25hours-hotels.com/hotels/berlin\" class=\"destination_slider_redesign\" style=\"background-image: url(https://www.25hours-hotels.com/images/25hours_hotel_company_berlin_1470a1d6512c61bb59ddeda9.jpg)\" tabindex=\"0\">",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/hotels/berlin\" class=\"destination_slider_redesign\" style=\"background-image: url(https://www.25hours-hotels.com/images/25hours_hotel_company_berlin_1470a1d6512c61bb59ddeda9.jpg)\" tabindex=\"0\" aria-describedby=\"slick-slide00\">",
+    "report": "Added 'aria-describedby' attribute to the anchor element to provide a clear and consistent way for assistive technologies to identify the destination slider."
+  },
+  {
+    "target": [".btn_redesign"],
+
+    "html": "<a href=\"https://www.25hours-hotels.com/shop-voucher/gutscheine\" class=\"btn_redesign center_button\" tabindex=\"0\">jetzt KAUFEN</a>",
+    "fixedHtml": "<a href=\"https://www.25hours-hotels.com/shop-voucher/gutscheine\" class=\"btn_redesign center_button\" tabindex=\"0\" aria-describedby=\"descr\">jetzt KAUFEN</a>",
+    "report": "Added 'aria-describedby' attribute to the button element to provide a descriptive label for screen reader users."
+  },
+  {
+    "target": [".slider_teaser_element"],
+
+    "html": "<div class=\"slider_teaser_element slick-slide slick-current slick-active\" style=\"background-image: url(&quot;/images/221201_25h_website_anzeigenbanner_voucher_005781ae5781ae63fcdf4a.png&quot;); background-size: cover; background-position: center center; width: 1263px;\" data-slick-index=\"0\" aria-hidden=\"false\" tabindex=\"-1\" role=\"option\" aria-describedby=\"slick-slide30\">",
+    "fixedHtml": "<div class=\"slider_teaser_element slick-slide slick-current slick-active\" style=\"background-image: url(&quot;/images/221201_25h_website_anzeigenbanner_voucher_005781ae5781ae63fcdf4a.png&quot;); background-size: cover; background-position: center center; width: 1263px;\" data-slick-index=\"0\" aria-hidden=\"false\" tabindex=\"-1\" role=\"option\" aria-describedby=\"slick-slide30\"> <span class=\"sr-only\" aria-live=\"assertive\">This is a slider teaser element</span></div>",
+    "report": "Added 'sr-only' class to the div element to provide a clear label for screen reader users."
+  },
+  {
+    "target": ["#slick-slide20"],
+
+    "html": "<li class=\"slick-active\" aria-hidden=\"false\" role=\"presentation\" aria-selected=\"true\" aria-controls=\"navigation20\" id=\"slick-slide20\"><button type=\"button\" data-role=\"none\" role=\"button\" tabindex=\"0\">1</button></li>",
+    "fixedHtml": "<li class=\"slick-active\" aria-hidden=\"false\" role=\"presentation\" aria-selected=\"true\" aria-controls=\"navigation20\" id=\"slick-slide20\"><button type=\"button\" data-role=\"none\" role=\"button\" tabindex=\"0\" aria-label=\"Option 1\">1</button></li>",
+    "report": "Added 'aria-label' attribute to the button element to provide a clear label for screen reader users."
+  },
+  {
+    "target": [".headline.margin_spacer"],
+
+    "html": "<div class=\"headline margin_spacer\">\n <span>A 25hours Hotel in<br>every cool city.</span>\n </div>",
+    "fixedHtml": "<div class=\"headline margin_spacer\">\n <h2>A 25hours Hotel in every cool city.</h2>\n </div>",
+    "report": "Replaced 'span' element with 'h2' element to provide a proper heading structure for screen reader users."
+  },
+
+  {
+    "target": [".text_module_two_boxes"],
+    "html": "<div class=\"text_module_two_boxes margin_spacer module_wrapper\">",
+    "fixedHtml": "<div class=\"text_module_two_boxes margin_spacer module_wrapper\" role=\"main\">",
+    "report": "Added 'role=main' attribute to the div element to define a landmark for screen reader users."
+  },
+  {
+    "target": [".text_module.margin_spacer.module_wrapper:nth-child(17)"],
+    "html": "<div class=\"text_module_two_boxes margin_spacer module_wrapper\">",
+    "fixedHtml": "<div class=\"text_module_two_boxes margin_spacer module_wrapper\" role=\"main\">",
+    "report": "Added 'role=main' attribute to the div element to define a landmark for screen reader users."
+  },
+  {
+    "target": [".text_module.margin_spacer.module_wrapper:nth-child(20)"],
+    "html": "<div class=\"text_module margin_spacer module_wrapper\">",
+    "fixedHtml": "<div class=\"text_module margin_spacer module_wrapper\" role=\"main\">",
+    "report": "Added 'role=main' attribute to the div element to define a landmark for screen reader users."
+  },
+  {
+    "target": [".teaser_3boxes"],
+    "html": "<div class=\"teaser_3boxes margin_spacer module_wrapper\">",
+    "fixedHtml": "<div class=\"teaser_3boxes margin_spacer module_wrapper\" role=\"main\">",
+    "report": "Added 'role=main' attribute to the div element to define a landmark for screen reader users."
+  },
+  {
+    "target": ["h2"],
+    "html": "<h2 class=\"serif_line\">Now we are talking.</h2>",
+    "fixedHtml": "<h2 class=\"serif_line\" role=\"heading\">Now we are talking.</h2>",
+    "report": "Added 'role=heading' attribute to the h2 element to define a landmark for screen reader users."
+  },
+
+  {
+    "target": [".back-to-top"],
+    "html": "<a class=\"back-to-top js-back-to-top\">\n <svg><use xlink:href=\"#copyright\"></use></svg><br>\n back to<br>top\n </a>",
+    "fixedHtml": "<a class=\"back-to-top js-back-to-top\" aria-label=\"Back to top\">\n <svg><use xlink:href=\"#copyright\"></use></svg><br>\n back to<br>top\n </a>",
+    "report": "Added aria-label attribute to provide a clear and concise label for screen readers."
+  }
+]

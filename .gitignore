@@ -1,0 +1,9 @@
+# Don't commit outputted files to the repository
+output/**/*
+
+# Don't commit node modules to the repository
+node_modules
+
+# Don't commit lockfiles, to allow the use of either NPM or Yarn as package managers
+yarn.lock
+package-lock.json

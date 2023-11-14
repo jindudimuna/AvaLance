@@ -1,0 +1,19 @@
+{
+  "name": "html-file-mutate",
+  "version": "0.0.1",
+  "description": "This is a sample project that shows how a HTML file can be parsed, modified and a new file created with these modifications.",
+  "main": "index.js",
+  "repository": "https://github.com/jindudimuna/pilot-code",
+  "author": "jindudimuna <danieldimuna@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "jsdom": "^22.1.0"
+  },
+  "engines": {
+    "node": ">= 16.0.0"
+  }
+}
