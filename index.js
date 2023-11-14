@@ -35,7 +35,7 @@ function getInstructionList() {
       fs.readFileSync(INSTRUCTION_LIST_PATH).toString()
     );
 
-    // [FOR DEV ONLY]  Uncomment these to log assertions on parsed instruction list
+    // Uncomment these to log assertions on parsed instruction list
     console.log("(object) Parsed instruction list type => ", typeof instructionList);
     console.log("(true) Is parsed instruction list an array? => ", Array.isArray(instructionList));
 
