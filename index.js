@@ -121,7 +121,7 @@ function applyInstructionsToHtmlDoc(instructionList, htmlDoc) {
     // This conditional prevents the process from error-ing and exiting if the target node is not found
     if (!targetNode) {
       // Remove it, if you want the process to error and exit in such a case
-      console.error(`Target node not found for instruction: ${instruction.id}`);
+      console.error(`Target node not found for instruction: ${instruction.target[0]}`);
       return;
     }
 
