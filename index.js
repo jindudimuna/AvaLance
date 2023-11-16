@@ -52,6 +52,7 @@ function getInstructionList() {
  *
  * The parsed HTML node is returned by this function.
  */
+
 function getSourceHtmlDoc() {
   /*
     Read the HTML file at the given path and convert it to a string.
@@ -136,6 +137,32 @@ function applyInstructionsToHtmlDoc(instructionList, htmlDoc) {
   // console.log(htmlDoc);
 }
 
+function insertInstructions(instructionList, cleanedFile) {
+  //remove escape strings from the instructions json object.
+  const cleanedInstructions = instructionList.map((instruction) => {
+    return {
+      target: instruction.target,
+      html: instruction.html.replace(/\\(.)/g, "$1"),
+      fixedHtml: instruction.fixedHtml.replace(/\\(.)/g, "$1"),
+      report: instruction.report,
+    };
+  });
+  /**
+   * loop over the instructions.json
+   * run a search and replace in the cleanedhtml. we want to insert the fixedhtml in place of the html found in the cleanedhtml string
+   *
+   */
+
+  for (const newInstruction of cleanedInstructions) {
+    const insertTargets = cleanedFile.replace(newInstruction.html, newInstruction.fixedHtml);
+
+    if (!insertTargets) {
+      // Remove it, if you want the process to error and exit in such a case
+      console.error(`Target html not found for instruction: ${newInstruction.html}`);
+      return;
+    }
+  }
+}
 /**
  * Given a HTML node - which must have been modified with applied instructions -
  * this function saves the HTML node as a HTML file in the output directory.
@@ -155,14 +182,95 @@ function saveModifiedHtmlDoc(htmlDoc) {
   fs.writeFileSync(OUTPUT_HTML_PATH, htmlDoc.outerHTML);
 }
 
+function saveModifiedHtml(cleanedFile) {
+  /*
+  save the new output into a new file
+  */
+  fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
+}
+
 /*
   This is the main function of this entry file.
 
   It is an Immediately Invoked Function Expression (IIFE).
 */
+// (function main() {
+//   const htmlDoc = getSourceHTMLClean();
+//   const instructionList = getInstructionList();
+//   applyInstructionsToHtmlDoc(instructionList, htmlDoc);
+
+//   saveModifiedHtmlDoc(htmlDoc);
+// })();
+
+/*
+  This is the main function of this entry file.
+
+  It is an Immediately Invoked Function Expression (IIFE).
+*/
+
+/* 
+
+NEW FUNCTIONS
+this approach uses the string replacement 
+
+*/
+
+function getSourceHTMLClean() {
+  try {
+    const rawHtmlString = fs.readFileSync(SOURCE_HTML_PATH).toString();
+
+    // Remove extra whitespace and newlines
+    const trimmedHtml = rawHtmlString.replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n");
+
+    // Remove extra new paragraphs
+    const cleanedHtml = trimmedHtml.replace(/(\n\n+)+/g, "\n\n");
+
+    return cleanedHtml;
+  } catch (error) {
+    console.error("Error retrieving or parsing HTML:", error);
+    process.exit(1); // Exit the process with an error code
+  }
+}
+
+function insertInstructions(instructionList, cleanedFile) {
+  //remove escape strings from the instructions json object.
+  const cleanedInstructions = instructionList.map((instruction) => {
+    return {
+      target: instruction.target,
+      html: instruction.html.replace(/\\(.)/g, "$1"),
+      fixedHtml: instruction.fixedHtml.replace(/\\(.)/g, "$1"),
+      report: instruction.report,
+    };
+  });
+  /**
+   * loop over the instructions.json
+   * run a search and replace in the cleanedhtml. we want to insert the fixedhtml in place of the html found in the cleanedhtml string
+   *
+   */
+
+  for (const newInstruction of cleanedInstructions) {
+    const insertTargets = cleanedFile.replace(newInstruction.html, newInstruction.fixedHtml);
+
+    if (!insertTargets) {
+      // Remove it, if you want the process to error and exit in such a case
+      console.error(`Target html not found for instruction: ${newInstruction.html}`);
+      return;
+    }
+  }
+}
+function saveModifiedHtml(cleanedFile) {
+  /*
+  save the new output into a new file
+  */
+  fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
+}
+
 (function main() {
-  const htmlDoc = getSourceHtmlDoc();
+  const cleanedFile = getSourceHTMLClean();
   const instructionList = getInstructionList();
-  applyInstructionsToHtmlDoc(instructionList, htmlDoc);
-  saveModifiedHtmlDoc(htmlDoc);
+  insertInstructions(instructionList, cleanedFile);
+
+  saveModifiedHtml(cleanedFile);
 })();
+
+//remove escape strings from the instructions.
