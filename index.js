@@ -237,8 +237,8 @@ function insertInstructions(instructionList, cleanedFile) {
   const cleanedInstructions = instructionList.map((instruction) => {
     return {
       target: instruction.target,
-      html: instruction.html.replace(/\\(.)/g, "$1"),
-      fixedHtml: instruction.fixedHtml.replace(/\\(.)/g, "$1"),
+      html: instruction.html.replace(/\\(.)/g, "$1").replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n").replace(/(\n\n+)+/g, "\n\n"),
+      fixedHtml: instruction.fixedHtml.replace(/\\(.)/g, "$1").replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n").replace(/(\n\n+)+/g, "\n\n"),
       report: instruction.report,
     };
   });
@@ -249,14 +249,18 @@ function insertInstructions(instructionList, cleanedFile) {
    */
 
   for (const newInstruction of cleanedInstructions) {
-    const insertTargets = cleanedFile.replace(newInstruction.html, newInstruction.fixedHtml);
 
-    if (!insertTargets) {
-      // Remove it, if you want the process to error and exit in such a case
-      console.error(`Target html not found for instruction: ${newInstruction.html}`);
-      return;
-    }
+    if(!cleanedFile.includes(newInstruction.html)){
+       // Remove it, if you want the process to error and exit in such a case
+       console.error(`Target html not found for instruction: ${newInstruction.html}`);
+       //return null;
+       continue;
+    } 
+
+    cleanedFile = cleanedFile.replace(newInstruction.html, newInstruction.fixedHtml);
   }
+
+  return cleanedFile;
 }
 function saveModifiedHtml(cleanedFile) {
   /*
@@ -268,9 +272,14 @@ function saveModifiedHtml(cleanedFile) {
 (function main() {
   const cleanedFile = getSourceHTMLClean();
   const instructionList = getInstructionList();
-  insertInstructions(instructionList, cleanedFile);
+  let replacedContent = insertInstructions(instructionList, cleanedFile);
 
-  saveModifiedHtml(cleanedFile);
+  if(!replacedContent){
+    console.log('no content replaced');
+    return;
+  }
+
+  saveModifiedHtml(replacedContent);
 })();
 
 //remove escape strings from the instructions.
