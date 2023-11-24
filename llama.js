@@ -30,9 +30,10 @@ const llamaConnector = require("./llamaConnector");
   let input = nodesString;
 
   let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));
-  const answers = instructions.getInstructionsList();
 
-  answers.push(result);
+  instructions.saveInstructions(result); //write the result to the instructions.json file
+
+  // answers.push(result);
 
   console.log("Question:", input);
   console.log("Answer:", result);

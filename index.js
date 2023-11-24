@@ -237,8 +237,16 @@ function insertInstructions(instructionList, cleanedFile) {
   const cleanedInstructions = instructionList.map((instruction) => {
     return {
       target: instruction.target,
-      html: instruction.html.replace(/\\(.)/g, "$1").replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n").replace(/(\n\n+)+/g, "\n\n"),
-      fixedHtml: instruction.fixedHtml.replace(/\\(.)/g, "$1").replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n").replace(/(\n\n+)+/g, "\n\n"),
+      html: instruction.html
+        .replace(/\\(.)/g, "$1")
+        .replace(/\s+/g, " ")
+        .replace(/[\r\n]+/g, "\n")
+        .replace(/(\n\n+)+/g, "\n\n"),
+      fixedHtml: instruction.fixedHtml
+        .replace(/\\(.)/g, "$1")
+        .replace(/\s+/g, " ")
+        .replace(/[\r\n]+/g, "\n")
+        .replace(/(\n\n+)+/g, "\n\n"),
       report: instruction.report,
     };
   });
@@ -249,13 +257,12 @@ function insertInstructions(instructionList, cleanedFile) {
    */
 
   for (const newInstruction of cleanedInstructions) {
-
-    if(!cleanedFile.includes(newInstruction.html)){
-       // Remove it, if you want the process to error and exit in such a case
-       console.error(`Target html not found for instruction: ${newInstruction.html}`);
-       //return null;
-       continue;
-    } 
+    if (!cleanedFile.includes(newInstruction.html)) {
+      // Remove it, if you want the process to error and exit in such a case
+      console.error(`Target html not found for instruction: ${newInstruction.html}`);
+      //return null;
+      continue;
+    }
 
     cleanedFile = cleanedFile.replace(newInstruction.html, newInstruction.fixedHtml);
   }
@@ -269,13 +276,20 @@ function saveModifiedHtml(cleanedFile) {
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
 }
 
+function saveInstructions(response) {
+  /*
+  save the new response from llama into a new file
+  */
+  fs.writeFileSync(INSTRUCTION_LIST_PATH, JSON.stringify([response], null, 2));
+}
+
 (function main() {
   const cleanedFile = getSourceHTMLClean();
   const instructionList = getInstructionList();
   let replacedContent = insertInstructions(instructionList, cleanedFile);
 
-  if(!replacedContent){
-    console.log('no content replaced');
+  if (!replacedContent) {
+    console.log("no content replaced");
     return;
   }
 
