@@ -19,6 +19,8 @@ const llamaConnector = require("./llamaConnector");
   llamaConnector.setTemperature(0.5);
 
   const requestData = data.violations; //data is the raw json file we would be extracting from the zip file
+  /**
+ * 
 
   for (const info of requestData) {
     const violations = info.accessibility.violations; //select the array where we have violations and loop over it
@@ -27,6 +29,21 @@ const llamaConnector = require("./llamaConnector");
       return nodesString;
     }
   }
+   */
+  const nodesString = requestData
+    .flatMap((info) => info.accessibility.violations)
+    .flatMap((error) =>
+      error.nodes.map((node) => {
+        return {
+         ` ' id: ${node.any[0].id} ',
+          html: ${node.html},
+          failureSummary: ${node.failureSummary},
+        } `;
+      })
+    );
+
+  console.log(JSON.stringify(nodesString, null, 2));
+
   let input = nodesString;
 
   let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));

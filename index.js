@@ -278,9 +278,11 @@ function saveModifiedHtml(cleanedFile) {
 
 function saveInstructions(response) {
   /*
-  save the new response from llama into a new file
+ this function saves the new response from llama into a new file
   */
-  fs.writeFileSync(INSTRUCTION_LIST_PATH, JSON.stringify([response], null, 2));
+
+  // Append the new response to the file
+  fs.appendFileSync(INSTRUCTION_LIST_PATH, `,\n${JSON.stringify(response, null, 2)}`);
 }
 
 (function main() {
