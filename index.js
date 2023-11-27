@@ -305,3 +305,8 @@ function saveInstructions(response) {
 })();
 
 //remove escape strings from the instructions.
+
+module.exports = {
+  saveHtmlFromZip,
+  saveInstructions,
+};
