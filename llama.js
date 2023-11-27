@@ -1,5 +1,5 @@
-const instructions = require("./index");
-
+const save = require("./index");
+const data = require("./zipTraverser");
 const llamaConnector = require("./llamaConnector");
 
 (async function () {
@@ -18,26 +18,25 @@ const llamaConnector = require("./llamaConnector");
 
   llamaConnector.setTemperature(0.5);
 
-  const requestData = data.violations; //data is the raw json file we would be extracting from the zip file
-  /**
- * 
+  function whatToDoPerPage(html, report) {
+    //for dev only, uncomment this to see the html
+    // console.log(html);
 
-  for (const info of requestData) {
-    const violations = info.accessibility.violations; //select the array where we have violations and loop over it
-    for (const error of violations) {
-      const nodesString = JSON.stringify(error.nodes, null, 2); //Indent the JSON string for better readability
-      return nodesString;
-    }
+    save.saveHtmlFromZip(html); //save the extracted html file
+
+    return report;
+    // console.log(report.accessibility.violations);
   }
-   */
+  const requestData = await data.navigateZip("./assets/example.zip", whatToDoPerPage); //data is the raw json file we would be extracting from the zip file
+
   const nodesString = requestData
     .flatMap((info) => info.accessibility.violations)
     .flatMap((error) =>
       error.nodes.map((node) => {
-        return {
-         ` ' id: ${node.any[0].id} ',
-          html: ${node.html},
-          failureSummary: ${node.failureSummary},
+        return ` {
+          ' id ': ${node.any[0].id},
+          'html': ${node.html},
+          'failureSummary': ${node.failureSummary},
         } `;
       })
     );
@@ -48,9 +47,7 @@ const llamaConnector = require("./llamaConnector");
 
   let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));
 
-  instructions.saveInstructions(result); //write the result to the instructions.json file
-
-  // answers.push(result);
+  save.saveInstructions(result); //write the result to the instructions.json file
 
   console.log("Question:", input);
   console.log("Answer:", result);

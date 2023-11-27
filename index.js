@@ -276,6 +276,12 @@ function saveModifiedHtml(cleanedFile) {
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
 }
 
+function saveHtmlFromZip(htmlZip) {
+  /*
+  save the extracted html into a new file
+  */
+  fs.writeFileSync(SOURCE_HTML_PATH, htmlZip);
+}
 function saveInstructions(response) {
   /*
  this function saves the new response from llama into a new file
