@@ -1,6 +1,7 @@
-const save = require("./index");
 const data = require("./zipTraverser");
 const llamaConnector = require("./llamaConnector");
+const actions = require("./index");
+const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
 (async function () {
   llamaConnector.setModel("/models/llama-2-7b-chat.bin", "Llama 2 7B", 12000, 4000);
@@ -18,36 +19,69 @@ const llamaConnector = require("./llamaConnector");
 
   llamaConnector.setTemperature(0.5);
 
-  function whatToDoPerPage(html, report) {
-    //for dev only, uncomment this to see the html
-    // console.log(html);
+  async function whatToDoPerPage(html, report) {
+    /**
+     * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
+     */
+    actions.saveHtmlFromZip(html);
 
-    save.saveHtmlFromZip(html); //save the extracted html file
+    const requestData = report;
 
-    return report;
-    // console.log(report.accessibility.violations);
+    /**
+     * prepare the data for llama, format it to the json format we ant to pass in to llama
+     */
+
+    const nodesString = requestData
+      .flatMap((info) => info.accessibility.violations)
+      .flatMap((error) =>
+        error.nodes.map((node) => {
+          return ` {
+      ' id ': ${node.any[0].id},
+      'html': ${node.html},
+      'failureSummary': ${node.failureSummary},
+    } `;
+        })
+      );
+    /**
+     * Send to llama
+     */
+
+    // [COMMENT THIS OUT TO SEE THE PROCESSED INPUT]
+    // console.log(JSON.stringify(nodesString, null, 2));
+
+    let input = nodesString;
+
+    /**
+     * Receive llama's response and send to the instructions.json file.
+     *
+     */
+    let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));
+
+    actions.saveInstructions(result); //write the result to the instructions.json file
+
+    /**
+     *  run the search and replace fixes and write the fixes to output.html
+     *
+     */
+
+    const htmlToChange = actions.getSourceHTMLClean();
+    const instructions = actions.getInstructionList();
+
+    const toInsert = actions.insertInstructions(instructions, htmlToChange);
+
+    actions.saveModifiedHtml(toInsert);
+
+    /**
+     * run the accessibility checker again on our output.html file
+     */
+
+    await accessibilityAnalyser.initBrowser();
+    const evaluation = await accessibilityAnalyser.analyzeFile("./output/output.html");
+    console.log(evaluation);
+    await accessibilityAnalyser.closeBrowser();
   }
-  const requestData = await data.navigateZip("./assets/example.zip", whatToDoPerPage); //data is the raw json file we would be extracting from the zip file
 
-  const nodesString = requestData
-    .flatMap((info) => info.accessibility.violations)
-    .flatMap((error) =>
-      error.nodes.map((node) => {
-        return ` {
-          ' id ': ${node.any[0].id},
-          'html': ${node.html},
-          'failureSummary': ${node.failureSummary},
-        } `;
-      })
-    );
-
-  console.log(JSON.stringify(nodesString, null, 2));
-
-  let input = nodesString;
-
-  let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));
-
-  save.saveInstructions(result); //write the result to the instructions.json file
+  await data.navigateZip("./assets/example.zip", whatToDoPerPage);
 
   console.log("Question:", input);
   console.log("Answer:", result);

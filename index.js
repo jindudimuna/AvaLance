@@ -236,7 +236,7 @@ function insertInstructions(instructionList, cleanedFile) {
   //remove escape strings from the instructions json object.
   const cleanedInstructions = instructionList.map((instruction) => {
     return {
-      target: instruction.target,
+      id: instruction.id,
       html: instruction.html
         .replace(/\\(.)/g, "$1")
         .replace(/\s+/g, " ")
@@ -247,6 +247,7 @@ function insertInstructions(instructionList, cleanedFile) {
         .replace(/\s+/g, " ")
         .replace(/[\r\n]+/g, "\n")
         .replace(/(\n\n+)+/g, "\n\n"),
+      failureSummary: instruction.failureSummary,
       report: instruction.report,
     };
   });
@@ -309,4 +310,8 @@ function saveInstructions(response) {
 module.exports = {
   saveHtmlFromZip,
   saveInstructions,
+  getSourceHTMLClean,
+  getInstructionList,
+  insertInstructions,
+  saveModifiedHtml,
 };
