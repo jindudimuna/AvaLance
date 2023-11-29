@@ -29,10 +29,12 @@ function getInstructionList() {
 
     If it's not valid or the file is not found, an error will be thrown and the process will exit.
   */
+  const instructionFilePath = "./new_directory/instructions.json";
+
   try {
     const instructionList = JSON.parse(
       // Read the file at the given path and convert the content to its string representation for easy parsing
-      fs.readFileSync(INSTRUCTION_LIST_PATH).toString()
+      fs.readFileSync(instructionFilePath).toString()
     );
 
     // Uncomment these to log assertions on parsed instruction list
@@ -273,6 +275,7 @@ function insertInstructions(instructionList, cleanedFile) {
 function saveModifiedHtml(cleanedFile) {
   /*
   save the new output into a new file
+
   */
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
 }
@@ -288,8 +291,20 @@ function saveInstructions(response) {
  this function saves the new response from llama into a new file
   */
 
+  //create the new directory
+  const directoryPath = "./new_directory";
+
+  // Check if the directory exists
+  if (!fs.existsSync(directoryPath)) {
+    // Create the directory if it doesn't exist
+    fs.mkdirSync(directoryPath);
+  }
+
   // Append the new response to the file
-  fs.appendFileSync(INSTRUCTION_LIST_PATH, `,\n${JSON.stringify(response, null, 2)}`);
+  const filePath = `${directoryPath}/instructions.json`;
+
+  // Append the new response to the file
+  fs.appendFileSync(filePath, `,\n${JSON.stringify(response, null, 2)}`);
 }
 
 (function main() {

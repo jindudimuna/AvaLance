@@ -8,13 +8,11 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
   llamaConnector.setPrompt(`
   You are an engineer tasked with fixing web accessibilities. Only return your output in the json format:
   {
-      id: "",
-      html: "",
+     
       fixedHtml: "",
-      failureSummary: "",
       report: ""
   }
-  where html is the code to be fixed and fixedhtml is the new html, the id is the id of the accessibility violation, failuresummary is the summary of the accessibility violation and your description of the fix is in the report property. I would give you a json snippet that has the html I want you to fix, along with more information about the error, so look at it and only respond in the new json format above. Respond very concisely.
+  where fixedhtml is the new html you've fixed and your description of the fix is in the report property. I would give you a json snippet that has the html I want you to fix, along with more information about the error, so look at it and only respond in the new json format above. Respond very concisely.
   `);
 
   llamaConnector.setTemperature(0.5);
@@ -31,33 +29,45 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
      * prepare the data for llama, format it to the json format we ant to pass in to llama
      */
 
-    const nodesString = requestData
-      .flatMap((info) => info.accessibility.violations)
-      .flatMap((error) =>
-        error.nodes.map((node) => {
-          return ` {
+    const nodesString = requestData.accessibility.violations.flatMap((error) =>
+      error.nodes.map((node) => {
+        return ` {
       ' id ': ${node.any[0].id},
       'html': ${node.html},
       'failureSummary': ${node.failureSummary},
     } `;
-        })
-      );
-    /**
-     * Send to llama
-     */
+      })
+    );
 
-    // [COMMENT THIS OUT TO SEE THE PROCESSED INPUT]
-    // console.log(JSON.stringify(nodesString, null, 2));
+    //change this to a loop to select the errors one by one.
+    //open loop here
+    for (const selectNodes of nodesString) {
+      let inputPrompt = `{
+            'id' : ${selectNodes.id},
+            'html' : ${selectNodes.html},
+            'failureSummary': ${selectNodes.failureSummary}, 
+          }`;
 
-    let input = nodesString;
+      let input = inputPrompt;
+      /**
+       * Send to llama
+       */
 
-    /**
-     * Receive llama's response and send to the instructions.json file.
-     *
-     */
-    let result = await llamaConnector.sendMessage(input, (sendPreviousMessages = false));
+      // [COMMENT THIS OUT TO SEE THE PROCESSED INPUT]
+      // console.log(JSON.stringify(nodesString, null, 2));
 
-    actions.saveInstructions(result); //write the result to the instructions.json file
+      /**
+       * Receive llama's response and send to the instructions.json file.
+       *
+       */
+      let result = await llamaConnector.sendMessage(input);
+      //merge the response from llama to the original nodestring
+      let updatedResult = Object.assign({}, inputPrompt, result);
+
+      actions.saveInstructions(updatedResult); //write the result to the instructions.json file
+    }
+
+    //close the lop here
 
     /**
      *  run the search and replace fixes and write the fixes to output.html
