@@ -31,7 +31,7 @@ function setTemperature(tempTemperature) {
   temperature = tempTemperature;
 }
 
-async function sendMessage(message, sendPreviousMessages = true) {
+async function sendMessage(message, sendPreviousMessages = false) {
   const newMessage = {
     role: "user",
     content: message,

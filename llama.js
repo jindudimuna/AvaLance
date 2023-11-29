@@ -3,6 +3,13 @@ const llamaConnector = require("./llamaConnector");
 const actions = require("./index");
 const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
+
+function delay(delayInms) {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+}
+
+
+
 (async function () {
   llamaConnector.setModel("/models/llama-2-13b-chat.bin", "Llama 2 13B", 12000, 4000);
   llamaConnector.setPrompt(`
@@ -47,14 +54,14 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
     //change this to a loop to select the errors one by one.
     //open loop here
-    for (const selectNodes of nodesString) {
-      let inputPrompt = `{
-            'id' : ${selectNodes.id},
-            'html' : ${selectNodes.html},
-            'failureSummary': ${selectNodes.failureSummary}, 
-          }`;
+    for (let selectNodes of nodesString) {
+      console.log(selectNodes.html);
+      console.log(selectNodes.failureSummary);
 
-      let input = inputPrompt;
+      let inputPrompt = JSON.stringify(selectNodes);
+
+      console.log(inputPrompt)
+      //let input = inputPrompt;
       let timeStart = Date.now();
       /**
        * Send to llama
@@ -67,15 +74,39 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
        * Receive llama's response and send to the instructions.json file.
        *
        */
-      let result = await llamaConnector.sendMessage(input);
+  
+
+      let result = null;
+      try {
+        result = await llamaConnector.sendMessage(inputPrompt);
+
+        if(typeof result == "string") {
+          console.log(result);
+          result = result.replaceAll("\"","");
+          result = JSON.parse(result);
+        }
+
+        //await delay(10000);
+        
+      } catch(e) {
+        console.log(e);
+
+        await delay(60000);
+      }
+
+      console.log(result);
+
+   
+     
 
       var delta = Date.now() - timeStart;
       console.log(`Request took: ${delta}ms`);
 
       //merge the response from llama to the original nodestring
-      let updatedResult = Object.assign({}, inputPrompt, result);
+      let updatedResult = Object.assign({}, selectNodes, result);
 
       finalBarriers.push(updatedResult);
+
     }
 
     actions.saveAllInstructions(pagePath, finalBarriers);
@@ -106,7 +137,7 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
     await accessibilityAnalyser.closeBrowser();
   }
 
-  await data.navigateZip("./assets/example.zip", whatToDoPerPage);
+  await data.navigateZip("./assets/example2.zip", whatToDoPerPage);
 
   console.log("Question:", input);
   console.log("Answer:", result);
