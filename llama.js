@@ -4,7 +4,7 @@ const actions = require("./index");
 const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
 (async function () {
-  llamaConnector.setModel("/models/llama-2-7b-chat.bin", "Llama 2 7B", 12000, 4000);
+  llamaConnector.setModel("/models/llama-2-13b-chat.bin", "Llama 2 13B", 12000, 4000);
   llamaConnector.setPrompt(`
   You are an engineer tasked with fixing web accessibilities. Only return your output in the json format:
   {
@@ -17,11 +17,13 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
   llamaConnector.setTemperature(0.5);
 
-  async function whatToDoPerPage(html, report) {
+  async function whatToDoPerPage(domain, url,html, report) {
     /**
      * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
      */
-    actions.saveHtmlFromZip(html);
+    const pagePath = actions.createPageFolder(url);    
+
+    actions.saveHtmlFromZip(pagePath, html);
 
     const requestData = report;
 
@@ -29,15 +31,19 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
      * prepare the data for llama, format it to the json format we ant to pass in to llama
      */
 
-    const nodesString = requestData.accessibility.violations.flatMap((error) =>
-      error.nodes.map((node) => {
-        return ` {
-      ' id ': ${node.any[0].id},
-      'html': ${node.html},
-      'failureSummary': ${node.failureSummary},
-    } `;
-      })
-    );
+    const nodesString = requestData.accessibility.violations
+      .flatMap((error) => {
+        const errorId = error.id;
+        return error.nodes.map((node) => {
+          return {
+            'id': errorId,
+            'html': node.html,
+            'failureSummary': node.failureSummary,
+          } 
+        });
+      });
+
+    let finalBarriers = [];
 
     //change this to a loop to select the errors one by one.
     //open loop here
@@ -49,6 +55,7 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
           }`;
 
       let input = inputPrompt;
+      let timeStart = Date.now();
       /**
        * Send to llama
        */
@@ -61,11 +68,19 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
        *
        */
       let result = await llamaConnector.sendMessage(input);
+
+      var delta = Date.now() - timeStart;
+      console.log(`Request took: ${delta}ms`);
+
       //merge the response from llama to the original nodestring
       let updatedResult = Object.assign({}, inputPrompt, result);
 
-      actions.saveInstructions(updatedResult); //write the result to the instructions.json file
+      finalBarriers.push(updatedResult);
     }
+
+    actions.saveAllInstructions(pagePath, finalBarriers);
+
+    return;
 
     //close the lop here
 

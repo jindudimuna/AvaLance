@@ -3,6 +3,7 @@
 
 const fs = require("fs"); // Import file system module from the standard Node.js library
 const jsdom = require("jsdom");
+const path = require('path');
 
 // Path to asset directory
 const ASSET_DIR_PATH = "./assets";
@@ -280,33 +281,50 @@ function saveModifiedHtml(cleanedFile) {
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
 }
 
-function saveHtmlFromZip(htmlZip) {
+function saveHtmlFromZip(folderPath, htmlZip) {
   /*
   save the extracted html into a new file
   */
-  fs.writeFileSync(SOURCE_HTML_PATH, htmlZip);
+  const filePath = path.join(folderPath, 'source.html'); 
+  fs.writeFileSync(filePath, htmlZip);
 }
-function saveInstructions(response) {
+
+function saveAllInstructions(folderPath, barriers) {
+  const filePath = path.join(folderPath, 'instructions.json');
+  fs.writeFileSync(filePath, JSON.stringify(barriers, null, 2));
+}
+
+
+
+function saveInstructions(folderPath, response) {
   /*
  this function saves the new response from llama into a new file
   */
 
-  //create the new directory
-  const directoryPath = "./new_directory";
-
   // Check if the directory exists
-  if (!fs.existsSync(directoryPath)) {
+  if (!fs.existsSync(folderPath)) {
     // Create the directory if it doesn't exist
-    fs.mkdirSync(directoryPath);
+    fs.mkdirSync(folderPath);
   }
 
   // Append the new response to the file
-  const filePath = `${directoryPath}/instructions.json`;
+  const filePath = `${folderPath}/instructions.json`;
 
   // Append the new response to the file
   fs.appendFileSync(filePath, `,\n${JSON.stringify(response, null, 2)}`);
 }
 
+function createPageFolder(url) {
+  const pageFolderPath =  path.join('.', OUTPUT_DIR_PATH, url);
+  
+  if(!fs.existsSync(pageFolderPath)) {
+    fs.mkdirSync(pageFolderPath);
+  }
+
+  return pageFolderPath;
+}
+
+/*
 (function main() {
   const cleanedFile = getSourceHTMLClean();
   const instructionList = getInstructionList();
@@ -318,7 +336,7 @@ function saveInstructions(response) {
   }
 
   saveModifiedHtml(replacedContent);
-})();
+})();*/
 
 //remove escape strings from the instructions.
 
@@ -329,4 +347,6 @@ module.exports = {
   getInstructionList,
   insertInstructions,
   saveModifiedHtml,
+  createPageFolder,
+  saveAllInstructions,
 };
