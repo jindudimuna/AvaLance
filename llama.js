@@ -2,13 +2,32 @@ const data = require("./zipTraverser");
 const llamaConnector = require("./llamaConnector");
 const actions = require("./index");
 const accessibilityAnalyser = require("./accessibilityAnalyser.js");
+const { jsonrepair } = require('jsonrepair');
+const path = require('path');
+
+const maxInputLength = 100
 
 
 function delay(delayInms) {
   return new Promise(resolve => setTimeout(resolve, delayInms));
 }
 
+function isInputLengthValid(input) {
+  return input.length <= maxInputLength;
+}
 
+async function waitForModelToBeRunning() {
+  let timeStart = Date.now();
+  let modelRunning = await llamaConnector.modelRunning();
+  while(!modelRunning) {
+    console.log("waiting for model");
+    modelRunning = await llamaConnector.modelRunning();
+    if(!modelRunning) {
+        await delay(10000);
+    }
+  }
+  console.log("Model Running - Delta Time:", Date.now() - timeStart, 'ms');
+}
 
 (async function () {
   llamaConnector.setModel("/models/llama-2-13b-chat.bin", "Llama 2 13B", 12000, 4000);
@@ -25,93 +44,100 @@ function delay(delayInms) {
   llamaConnector.setTemperature(0.5);
 
   async function whatToDoPerPage(domain, url,html, report) {
+    console.log("On page:", url)
     /**
      * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
      */
-    const pagePath = actions.createPageFolder(url);    
+    const pagePath = actions.createPageFolder(url);
+    
+    if(actions.allFilesExist(pagePath)) {
+      return;
+    }
+
 
     actions.saveHtmlFromZip(pagePath, html);
 
-    const requestData = report;
+    if(!actions.instructionsFileExists(pagePath)) {
+      const requestData = report;
 
-    /**
-     * prepare the data for llama, format it to the json format we ant to pass in to llama
-     */
+      /**
+       * prepare the data for llama, format it to the json format we ant to pass in to llama
+       */
 
-    const nodesString = requestData.accessibility.violations
-      .flatMap((error) => {
-        const errorId = error.id;
-        return error.nodes.map((node) => {
-          return {
-            'id': errorId,
-            'html': node.html,
-            'failureSummary': node.failureSummary,
-          } 
+      const nodesString = requestData.accessibility.violations
+        .flatMap((error) => {
+          const errorId = error.id;
+          return error.nodes.map((node) => {
+            return {
+              'id': errorId,
+              'html': node.html,
+              'failureSummary': node.failureSummary,
+            } 
+          });
         });
-      });
 
-    let finalBarriers = [];
+      let finalBarriers = [];
 
-    //change this to a loop to select the errors one by one.
-    //open loop here
-    for (let selectNodes of nodesString) {
-      console.log(selectNodes.html);
-      console.log(selectNodes.failureSummary);
+      //change this to a loop to select the errors one by one.
+      //open loop here
+      for (let selectNodes of nodesString) {
 
-      let inputPrompt = JSON.stringify(selectNodes);
+        let inputPrompt = JSON.stringify(selectNodes);
+        inputPrompt = inputPrompt.replaceAll('\n', "");
 
-      console.log(inputPrompt)
-      //let input = inputPrompt;
-      let timeStart = Date.now();
-      /**
-       * Send to llama
-       */
+        let timeStart = Date.now();
+    
+        await waitForModelToBeRunning();
 
-      // [COMMENT THIS OUT TO SEE THE PROCESSED INPUT]
-      // console.log(JSON.stringify(nodesString, null, 2));
-
-      /**
-       * Receive llama's response and send to the instructions.json file.
-       *
-       */
-  
-
-      let result = null;
-      try {
-        result = await llamaConnector.sendMessage(inputPrompt);
-
-        if(typeof result == "string") {
-          console.log(result);
-          result = result.replaceAll("\"","");
-          result = JSON.parse(result);
+        let result = null;
+        try {
+          console.log("Sending Prompt:", inputPrompt);
+          result = await llamaConnector.sendMessage(inputPrompt);
+        } catch(e) {
+          console.log(e);
+          result = {
+            error: e.message
+          }
+          await waitForModelToBeRunning();
         }
 
-        //await delay(10000);
-        
-      } catch(e) {
-        console.log(e);
+        if(typeof result == "string") {
+          try {
+            result = result.replaceAll("\"'","'");
+            result = result.replaceAll("'\"","'");
+            let repair = jsonrepair(result);
+            result = JSON.parse(repair);
+          } catch(e) {
+            try {
+              result = await llamaConnector.sendMessage(inputPrompt);
+              if(typeof result == "string") {
+                result = result.replaceAll("\"'","'");
+                result = result.replaceAll("'\"","'");
+                repair = jsonrepair(result);
+                result = JSON.parse(repair);
+              }
+            } catch(e) {
+              console.log(e);
+              result = {
+                error: e.message
+              }
+              await waitForModelToBeRunning();
+            }
+          }
+        }
 
-        await delay(60000);
+        var delta = Date.now() - timeStart;
+        console.log('Request took:', delta, 'ms');
+
+        //merge the response from llama to the original nodestring
+        let updatedResult = Object.assign({}, selectNodes, result);
+
+        finalBarriers.push(updatedResult);
+
       }
 
-      console.log(result);
-
-   
-     
-
-      var delta = Date.now() - timeStart;
-      console.log(`Request took: ${delta}ms`);
-
-      //merge the response from llama to the original nodestring
-      let updatedResult = Object.assign({}, selectNodes, result);
-
-      finalBarriers.push(updatedResult);
-
+      actions.saveAllInstructions(pagePath, finalBarriers);
     }
-
-    actions.saveAllInstructions(pagePath, finalBarriers);
-
-    return;
 
     //close the lop here
 
@@ -120,28 +146,27 @@ function delay(delayInms) {
      *
      */
 
-    const htmlToChange = actions.getSourceHTMLClean();
-    const instructions = actions.getInstructionList();
+    const htmlToChange = actions.getSourceHTMLClean(pagePath);
+    const instructions = actions.getInstructionList(pagePath);
 
     const toInsert = actions.insertInstructions(instructions, htmlToChange);
 
-    actions.saveModifiedHtml(toInsert);
+    actions.saveModifiedHtml(pagePath, toInsert);
 
     /**
      * run the accessibility checker again on our output.html file
      */
 
-    await accessibilityAnalyser.initBrowser();
-    const evaluation = await accessibilityAnalyser.analyzeFile("./output/output.html");
-    console.log(evaluation);
-    await accessibilityAnalyser.closeBrowser();
+    const outputPath = path.join(pagePath, "output.html")
+    const evaluation = await accessibilityAnalyser.analyzeFile(outputPath);
+    //console.log(evaluation);
+
+    actions.saveReport(pagePath, evaluation);
   }
 
-  await data.navigateZip("./assets/example2.zip", whatToDoPerPage);
+  await accessibilityAnalyser.initBrowser();
 
-  console.log("Question:", input);
-  console.log("Answer:", result);
-
-  let chatHistory = llamaConnector.getChatHistory();
-  console.log("\nChat History\n", chatHistory);
+  await data.navigateZip("./assets/example.zip", whatToDoPerPage);
+  
+  await accessibilityAnalyser.closeBrowser();
 })();

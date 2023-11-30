@@ -25,8 +25,6 @@ async function navigateZip(zipFilePath, pagefunction) {
         html = html.toString('utf8');
 
         await pagefunction(domain, url, html, report);
-
-        return;
     }
     await zip.close();
 }

@@ -24,14 +24,14 @@ const OUTPUT_HTML_PATH = `${OUTPUT_DIR_PATH}/output.html`;
  *
  * The parsed POJO is returned by this function.
  */
-function getInstructionList() {
+function getInstructionList(folderPath) {
   /*
     We expect a valid JSON string, so we parse the string to a valid JS object.
 
     If it's not valid or the file is not found, an error will be thrown and the process will exit.
   */
-  const instructionFilePath = "./new_directory/instructions.json";
 
+  const instructionFilePath = path.join(folderPath, 'instructions.json')
   try {
     const instructionList = JSON.parse(
       // Read the file at the given path and convert the content to its string representation for easy parsing
@@ -185,11 +185,13 @@ function saveModifiedHtmlDoc(htmlDoc) {
   fs.writeFileSync(OUTPUT_HTML_PATH, htmlDoc.outerHTML);
 }
 
-function saveModifiedHtml(cleanedFile) {
+function saveModifiedHtml(folderPath, cleanedFile) {
   /*
   save the new output into a new file
   */
-  fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
+  const filePath = path.join(folderPath, 'output.html')
+
+  fs.writeFileSync(filePath, cleanedFile);
 }
 
 /*
@@ -218,9 +220,11 @@ this approach uses the string replacement
 
 */
 
-function getSourceHTMLClean() {
+function getSourceHTMLClean(folderPath) {
   try {
-    const rawHtmlString = fs.readFileSync(SOURCE_HTML_PATH).toString();
+    const filePath = path.join(folderPath, 'source.html')
+
+    const rawHtmlString = fs.readFileSync(filePath).toString();
 
     // Remove extra whitespace and newlines
     const trimmedHtml = rawHtmlString.replace(/\s+/g, " ").replace(/[\r\n]+/g, "\n");
@@ -236,8 +240,13 @@ function getSourceHTMLClean() {
 }
 
 function insertInstructions(instructionList, cleanedFile) {
+  let cleanedInstructions = instructionList.filter(elem => elem.hasOwnProperty('fixedHtml') && elem.fixedHtml != null && elem.fixedHtml != "" &&
+  elem.hasOwnProperty('html') && elem.html != null && elem.html != "" && 
+  elem.hasOwnProperty('failureSummary') && elem.hasOwnProperty('report'));
+
   //remove escape strings from the instructions json object.
-  const cleanedInstructions = instructionList.map((instruction) => {
+  cleanedInstructions = cleanedInstructions.map((instruction) => {
+    console.log(instruction.html)
     return {
       id: instruction.id,
       html: instruction.html
@@ -273,12 +282,28 @@ function insertInstructions(instructionList, cleanedFile) {
 
   return cleanedFile;
 }
-function saveModifiedHtml(cleanedFile) {
-  /*
-  save the new output into a new file
 
-  */
+/*
+function saveModifiedHtml(cleanedFile) {
+ 
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
+}*/
+
+
+function instructionsFileExists(folderPath) {
+  const filePath = path.join(folderPath, "instructions.json");
+  return fs.existsSync(filePath);
+}
+
+function allFilesExist(folderPath) {
+  
+  const outputPath = path.join(folderPath, "output.html");
+  const instructionsPath = path.join(folderPath, "instructions.json");
+  const reportPath = path.join(folderPath, "report.json");
+  const sourcePath = path.join(folderPath, "source.html");
+
+  return  fs.existsSync(outputPath) && fs.existsSync(instructionsPath) && 
+  fs.existsSync(reportPath) && fs.existsSync(sourcePath);
 }
 
 function saveHtmlFromZip(folderPath, htmlZip) {
@@ -287,6 +312,15 @@ function saveHtmlFromZip(folderPath, htmlZip) {
   */
   const filePath = path.join(folderPath, 'source.html'); 
   fs.writeFileSync(filePath, htmlZip);
+}
+
+
+function saveReport(folderPath, report) {
+  /*
+  save the report into a new file
+  */
+  const filePath = path.join(folderPath, 'report.json'); 
+  fs.writeFileSync(filePath, JSON.stringify(report));
 }
 
 function saveAllInstructions(folderPath, barriers) {
@@ -349,4 +383,7 @@ module.exports = {
   saveModifiedHtml,
   createPageFolder,
   saveAllInstructions,
+  saveReport,
+  instructionsFileExists,
+  allFilesExist
 };

@@ -77,6 +77,17 @@ async function sendChatMessage(prompt, messages = [], temperature = 0.5) {
   return result.data;
 }
 
+async function modelRunning() {
+  try {
+    let result = await axios.post('http://localhost:3000/api/models', { "key": "" });
+    return result.status == 200;
+  } catch {
+    return false;
+  }
+}
+
+
+
 module.exports = {
   setModel,
   setPrompt,
@@ -84,4 +95,5 @@ module.exports = {
   sendMessage,
   resetChatHistory,
   getChatHistory,
+  modelRunning
 };
