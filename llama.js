@@ -166,7 +166,7 @@ async function waitForModelToBeRunning() {
 
   await accessibilityAnalyser.initBrowser();
 
-  await data.navigateZip("./assets/example.zip", whatToDoPerPage);
+  await data.navigateZip("./assets/1000study.zip", whatToDoPerPage);
   
   await accessibilityAnalyser.closeBrowser();
 })();

@@ -4,6 +4,10 @@ const path = require('path');
 
 let browser = null;
 
+function delay(delayInms) {
+    return new Promise(resolve => setTimeout(resolve, delayInms));
+}
+
 async function initBrowser() {
     browser = await puppeteer.launch({
         headless: false,
@@ -37,6 +41,8 @@ async function analyzeFile(filePath) {
         browser,
         `file://${absolutePath}`
     );
+
+    await delay(1000);
 
     const results = await axeBuilder.analyze();
     
