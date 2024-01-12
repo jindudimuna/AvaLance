@@ -1,0 +1,1992 @@
+{
+    "originalUrl": "https://25hours-hotels.com",
+    "url": "https://www.25hours-hotels.com/",
+    "accessibility": {
+        "testEngine": {
+            "name": "axe-core",
+            "version": "4.5.1"
+        },
+        "testRunner": {
+            "name": "axe"
+        },
+        "testEnvironment": {
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36",
+            "windowWidth": 1280,
+            "windowHeight": 720,
+            "orientationAngle": 0,
+            "orientationType": "portrait-primary"
+        },
+        "timestamp": "2023-04-12T19:45:52.779Z",
+        "url": "https://www.25hours-hotels.com/",
+        "toolOptions": {
+            "reporter": "v1"
+        },
+
+        "violations":[
+        {
+                "id": "duplicate-id",
+                "impact": "minor",
+                "tags": [
+                    "cat.parsing",
+                    "wcag2a",
+                    "wcag411"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "path-1",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<path d=\"M8.96404266,16.5434115 C8.82225357,16.4083454 7.5953435,15.1407175 5.28331247,12.740528 C4.90556251,12.3806892 4.90556251,11.7972753 5.28331247,11.4374365 C5.66106242,11.0775977 6.27351611,11.0775977 6.65126607,11.4374365 L10.2512084,14.5164585 L17.3443983,7.27058769 C17.7231401,6.9098041 18.3372019,6.9098041 18.7159437,7.27058769 C19.0946854,7.63137128 19.0946854,8.21631705 18.7159437,8.57710064 C14.5137232,13.5449854 12.1818466,16.2004223 11.720314,16.5434115 C11.0280151,17.0578952 10.5352135,16.9978495 10.2512084,16.9978495 C9.96720333,16.9978495 9.1767263,16.7460106 8.96404266,16.5434115 Z\" id=\"path-1\">",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > defs > path"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<path d=\"M8.96404266,16.5434115 C8.82225357,16.4083454 7.5953435,15.1407175 5.28331247,12.740528 C4.90556251,12.3806892 4.90556251,11.7972753 5.28331247,11.4374365 C5.66106242,11.0775977 6.27351611,11.0775977 6.65126607,11.4374365 L10.2512084,14.5164585 L17.3443983,7.27058769 C17.7231401,6.9098041 18.3372019,6.9098041 18.7159437,7.27058769 C19.0946854,7.63137128 19.0946854,8.21631705 18.7159437,8.57710064 C14.5137232,13.5449854 12.1818466,16.2004223 11.720314,16.5434115 C11.0280151,17.0578952 10.5352135,16.9978495 10.2512084,16.9978495 C9.96720333,16.9978495 9.1767263,16.7460106 8.96404266,16.5434115 Z\" id=\"path-1\">",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > defs > path"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<path d=\"M8.96404266,16.5434115 C8.82225357,16.4083454 7.5953435,15.1407175 5.28331247,12.740528 C4.90556251,12.3806892 4.90556251,11.7972753 5.28331247,11.4374365 C5.66106242,11.0775977 6.27351611,11.0775977 6.65126607,11.4374365 L10.2512084,14.5164585 L17.3443983,7.27058769 C17.7231401,6.9098041 18.3372019,6.9098041 18.7159437,7.27058769 C19.0946854,7.63137128 19.0946854,8.21631705 18.7159437,8.57710064 C14.5137232,13.5449854 12.1818466,16.2004223 11.720314,16.5434115 C11.0280151,17.0578952 10.5352135,16.9978495 10.2512084,16.9978495 C9.96720333,16.9978495 9.1767263,16.7460106 8.96404266,16.5434115 Z\" id=\"path-1\">",
+                        "target": [
+                            ".cmptoggle-3 > defs > path:nth-child(1)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: path-1"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "Page-1",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"]"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<g id=\"Page-1\" stroke=\"none\" stroke-width=\"1\" fill=\"none\" fill-rule=\"evenodd\">",
+                        "target": [
+                            ".cmptoggle-3 > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: Page-1"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "Rectangle",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "#Group > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(4)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#E6EAED\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "rect[fill=\"#E6EAED\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(5)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#E6EAED\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "rect[fill=\"#E6EAED\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(8)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(1)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(4)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(1)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(4)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<polygon id=\"Rectangle\" transform=\"translate(14.463548, 14.463548) rotate(-45.000000) translate(-14.463548, -14.463548) \" points=\"-4.62736129 13.0999114 33.5544569 13.0999114 33.5544569 15.8271842 -4.62736129 15.8271842\"></polygon>",
+                                        "target": [
+                                            "#Group-9 > polygon:nth-child(1)"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<rect id=\"Rectangle\" stroke=\"#A4A9AC\" fill=\"#FFFFFF\" x=\"0.5\" y=\"0.5\" width=\"23\" height=\"23\" rx=\"4\"></rect>",
+                        "target": [
+                            "#Group > rect[fill=\"#FFFFFF\"][stroke=\"#A4A9AC\"][y=\"0.5\"]:nth-child(1)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: Rectangle"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "mask-2",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<mask id=\"mask-2\" fill=\"white\"><use xlink:href=\"#path-1\"></use></mask>",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > mask"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<mask id=\"mask-2\" fill=\"white\"><use xlink:href=\"#path-1\"></use></mask>",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > mask"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<mask id=\"mask-2\" fill=\"white\"><use xlink:href=\"#path-1\"></use></mask>",
+                        "target": [
+                            "#Group > mask:nth-child(2)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: mask-2"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "Mask",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<use id=\"Mask\" fill=\"#4E4B48\" xlink:href=\"#path-3\"></use>",
+                                        "target": [
+                                            "use[fill=\"#4E4B48\"]:nth-child(7)"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<use id=\"Mask\" fill=\"#6D757D\" class=\"cmpsvggrayfill\" xlink:href=\"#path-5\"></use>",
+                                        "target": [
+                                            ".cmpsvggrayfill"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<use id=\"Mask\" fill=\"#4E4B48\" xlink:href=\"#path-1\"></use>",
+                                        "target": [
+                                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > use[fill=\"#4E4B48\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<use id=\"Mask\" fill=\"#4E4B48\" xlink:href=\"#path-1\"></use>",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g > use[fill=\"#4E4B48\"]"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<use id=\"Mask\" fill=\"#4E4B48\" xlink:href=\"#path-1\"></use>",
+                        "target": [
+                            "#Group > use[fill=\"#4E4B48\"]:nth-child(3)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: Mask"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "Group-3",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<g id=\"Group-3\">",
+                                        "target": [
+                                            "svg[aria-label=\"Measurement\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<g id=\"Group-3\">",
+                        "target": [
+                            "svg[aria-label=\"Marketing\"] > g[stroke=\"none\"][stroke-width=\"1\"][fill=\"none\"] > g"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: Group-3"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "SVGID_1_",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<rect id=\"SVGID_1_\" x=\"0.4\" y=\"3.9\" width=\"23.3\" height=\"16.2\"></rect>",
+                                        "target": [
+                                            "g:nth-child(5) > defs > rect[y=\"3.9\"][height=\"16.2\"][x=\"0.4\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"SVGID_1_\" x=\"0.4\" y=\"6\" width=\"23.3\" height=\"12.7\"></rect>",
+                                        "target": [
+                                            "g:nth-child(2) > defs > rect[y=\"6\"][height=\"12.7\"][x=\"0.4\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"SVGID_1_\" x=\"6\" y=\"0.8\" width=\"13.1\" height=\"22.4\"></rect>",
+                                        "target": [
+                                            "g:nth-child(1) > defs > rect[x=\"6\"][y=\"0.8\"][width=\"13.1\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"SVGID_1_\" x=\"2.3\" y=\"1.2\" width=\"19.4\" height=\"21\"></rect>",
+                                        "target": [
+                                            "g:nth-child(2) > defs > rect[x=\"2.3\"][y=\"1.2\"][width=\"19.4\"]"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<rect id=\"SVGID_1_\" x=\"0.5\" y=\"2\" width=\"23\" height=\"19.7\"></rect>",
+                        "target": [
+                            "rect[y=\"2\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: SVGID_1_"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "SVGID_3_",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<rect id=\"SVGID_3_\" x=\"0.4\" y=\"6\" width=\"23.3\" height=\"12.7\"></rect>",
+                                        "target": [
+                                            "g:nth-child(4) > defs > rect[y=\"6\"][height=\"12.7\"][x=\"0.4\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"SVGID_3_\" x=\"6\" y=\"0.8\" width=\"13.1\" height=\"22.4\"></rect>",
+                                        "target": [
+                                            "g:nth-child(3) > defs > rect[x=\"6\"][y=\"0.8\"][width=\"13.1\"]"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<rect id=\"SVGID_3_\" x=\"2.3\" y=\"1.2\" width=\"19.4\" height=\"21\"></rect>",
+                                        "target": [
+                                            "g:nth-child(4) > defs > rect[x=\"2.3\"][y=\"1.2\"][width=\"19.4\"]"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<rect id=\"SVGID_3_\" x=\"0.4\" y=\"3.9\" width=\"23.3\" height=\"16.2\"></rect>",
+                        "target": [
+                            "g:nth-child(9) > defs > rect[y=\"3.9\"][height=\"16.2\"][x=\"0.4\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: SVGID_3_"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "duplicate-id",
+                                "data": "lang-select-de",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<a href=\"\" data-lang-code=\"de\" id=\"lang-select-de\">Deutsch</a>",
+                                        "target": [
+                                            "a[href=\"\"]"
+                                        ]
+                                    }
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<div class=\"lang_dropdown_trigger\" id=\"lang-select-de\" data-lang-code=\"de\"><span class=\"langearth\"></span></div>",
+                        "target": [
+                            ".lang_dropdown_trigger"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Document has multiple static elements with the same id attribute: lang-select-de"
+                    }
+                ]
+            },
+            {
+                "id": "heading-order",
+                "impact": "moderate",
+                "tags": [
+                    "cat.semantics",
+                    "best-practice"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "heading-order",
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<h4>Zürich</h4>",
+                        "target": [
+                            ".slick-active[data-slick-index=\"-1\"][aria-hidden=\"false\"] > .destination_slider_redesign > .header-cities-overlay > h4"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Heading order invalid"
+                    }
+                ]
+            },
+            {
+                "id": "html-has-lang",
+                "impact": "serious",
+                "tags": [
+                    "cat.language",
+                    "wcag2a",
+                    "wcag311",
+                    "ACT"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "has-lang",
+                                "data": {
+                                    "messageKey": "noLang"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<html class=\"js \">",
+                        "target": [
+                            "html"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  The <html> element does not have a lang attribute"
+                    }
+                ]
+            },
+            {
+                "id": "landmark-unique",
+                "impact": "moderate",
+                "tags": [
+                    "cat.semantics",
+                    "best-practice"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "landmark-is-unique",
+                                "data": {
+                                    "role": "form",
+                                    "accessibleText": null
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<div class=\"cmpboxbtns\" role=\"form\">",
+                                        "target": [
+                                            ".cmpboxbtns"
+                                        ]
+                                    }
+                                ],
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"cmpboxwelcomeprps\" role=\"form\">",
+                        "target": [
+                            ".cmpboxwelcomeprps"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "landmark-is-unique",
+                                "data": {
+                                    "role": "navigation",
+                                    "accessibleText": null
+                                },
+                                "relatedNodes": [
+                                    {
+                                        "html": "<nav class=\"meta-navigation js-meta-navigation\">",
+                                        "target": [
+                                            ".meta-navigation"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<nav class=\"socialfooter\">",
+                                        "target": [
+                                            ".socialfooter"
+                                        ]
+                                    },
+                                    {
+                                        "html": "<nav class=\"footer-meta\">",
+                                        "target": [
+                                            ".footer-meta"
+                                        ]
+                                    }
+                                ],
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<nav class=\"navigation-overlay js-navigation-overlay\">",
+                        "target": [
+                            ".navigation-overlay"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  The landmark must have a unique aria-label, aria-labelledby, or title to make landmarks distinguishable"
+                    }
+                ]
+            },
+            {
+                "id": "link-name",
+                "impact": "serious",
+                "tags": [
+                    "cat.name-role-value",
+                    "wcag2a",
+                    "wcag412",
+                    "wcag244",
+                    "section508",
+                    "section508.22.a",
+                    "ACT"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.25hours-companion.com\" target=\"_blank\"> <img src=\"/layout/images/companion_logo.svg\" alt=\"\"></a>",
+                        "target": [
+                            ".headline > a[target=\"_blank\"]"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.25hours-people.com/jobs\" target=\"_blank\">\n                        <img src=\"/layout/images/home-redesign-button.svg\" alt=\"\">\n                    </a>",
+                        "target": [
+                            ".button_section > a[target=\"_blank\"]:nth-child(1)"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.25hours-people.com/\" target=\"_blank\">\n                        <img src=\"/layout/images/home-redesign-logo.svg\" alt=\"\">\n                    </a>",
+                        "target": [
+                            ".button_section > a[target=\"_blank\"]:nth-child(2)"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.facebook.com/25hoursHotels/\" target=\"_blank\" class=\"socialfootericon facebook\"></a>",
+                        "target": [
+                            ".facebook"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.instagram.com/25hourshotels/\" target=\"_blank\" class=\"socialfootericon instagram\"></a>",
+                        "target": [
+                            ".instagram"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "has-visible-text",
+                                "impact": "minor"
+                            },
+                            {
+                                "id": "aria-label",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "aria-labelledby",
+                                "impact": "serious"
+                            },
+                            {
+                                "id": "non-empty-title",
+                                "data": {
+                                    "messageKey": "noAttr"
+                                },
+                                "impact": "serious"
+                            }
+                        ],
+                        "none": [
+                            {
+                                "id": "focusable-no-name",
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<a href=\"https://www.youtube.com/user/25hourshotels\" target=\"_blank\" class=\"socialfootericon youtube\"></a>",
+                        "target": [
+                            ".youtube"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element is in tab order and does not have accessible text\n\nFix any of the following:\n  Element does not have text that is visible to screen readers\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute"
+                    }
+                ]
+            },
+            {
+                "id": "meta-viewport",
+                "impact": "critical",
+                "tags": [
+                    "cat.sensory-and-visual-cues",
+                    "wcag2aa",
+                    "wcag144",
+                    "ACT"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "meta-viewport",
+                                "data": "user-scalable=no",
+                                "impact": "critical"
+                            }
+                        ],
+                        "impact": "critical",
+                        "html": "<meta name=\"viewport\" content=\"initial-scale = 1,width=device-width,user-scalable=no,maximum-scale=1.0\">",
+                        "target": [
+                            "meta[name=\"viewport\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  user-scalable=no on <meta> tag disables zooming on mobile devices"
+                    }
+                ]
+            },
+            {
+                "id": "nested-interactive",
+                "impact": "serious",
+                "tags": [
+                    "cat.keyboard",
+                    "wcag2a",
+                    "wcag412"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "no-focusable-content",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<a href=\"https://www.25hours-hotels.com/hotels/berlin\" class=\"destination_slider_redesign\" style=\"background-image: url(https://www.25hours-hotels.com/images/25hours_hotel_company_berlin_1470a1d6512c61bb59ddeda9.jpg)\" tabindex=\"0\">",
+                                        "target": [
+                                            "div[aria-describedby=\"slick-slide00\"] > .destination_slider_redesign"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<div class=\"slick-slide slick-current slick-active slick-center\" style=\"width: 327px;\" data-slick-index=\"0\" aria-hidden=\"false\" tabindex=\"-1\" role=\"option\" aria-describedby=\"slick-slide00\">",
+                        "target": [
+                            "div[aria-describedby=\"slick-slide00\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "no-focusable-content",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<a href=\"https://www.25hours-hotels.com/hotels/dubai\" class=\"destination_slider_redesign\" style=\"background-image: url(https://www.25hours-hotels.com/images/dubai-1_2c084d52f2c61bb6152c2dd.jpg)\" tabindex=\"0\">\n\t\t\t\t\t<div class=\"header-cities-overlay\"><h4>Dubai</h4></div>\n\t\t\t\t</a>",
+                                        "target": [
+                                            "div[aria-describedby=\"slick-slide01\"] > .destination_slider_redesign"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<div class=\"slick-slide slick-active\" style=\"width: 327px;\" data-slick-index=\"1\" aria-hidden=\"false\" tabindex=\"-1\" role=\"option\" aria-describedby=\"slick-slide01\">",
+                        "target": [
+                            "div[aria-describedby=\"slick-slide01\"]"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "no-focusable-content",
+                                "relatedNodes": [
+                                    {
+                                        "html": "<a href=\"https://www.25hours-hotels.com/shop-voucher/gutscheine\" class=\"btn_redesign center_button\" tabindex=\"0\">jetzt KAUFEN</a>",
+                                        "target": [
+                                            ".btn_redesign"
+                                        ]
+                                    }
+                                ],
+                                "impact": "serious"
+                            }
+                        ],
+                        "impact": "serious",
+                        "html": "<div class=\"slider_teaser_element slick-slide slick-current slick-active\" style=\"background-image: url(&quot;/images/221201_25h_website_anzeigenbanner_voucher_005781ae5781ae63fcdf4a.png&quot;); background-size: cover; background-position: center center; width: 1263px;\" data-slick-index=\"0\" aria-hidden=\"false\" tabindex=\"-1\" role=\"option\" aria-describedby=\"slick-slide30\">",
+                        "target": [
+                            ".slider_teaser_element"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Element has focusable descendants"
+                    }
+                ]
+            },
+            {
+                "id": "presentation-role-conflict",
+                "impact": "minor",
+                "tags": [
+                    "cat.aria",
+                    "best-practice",
+                    "ACT"
+                ],
+                "nodes": [
+                    {
+                        "none": [
+                            {
+                                "id": "has-global-aria-attribute",
+                                "data": [
+                                    "aria-controls",
+                                    "aria-hidden"
+                                ],
+                                "impact": "minor"
+                            }
+                        ],
+                        "impact": "minor",
+                        "html": "<li class=\"slick-active\" aria-hidden=\"false\" role=\"presentation\" aria-selected=\"true\" aria-controls=\"navigation20\" id=\"slick-slide20\"><button type=\"button\" data-role=\"none\" role=\"button\" tabindex=\"0\">1</button></li>",
+                        "target": [
+                            "#slick-slide20"
+                        ],
+                        "failureSummary": "Fix all of the following:\n  Element does not have global ARIA attribute"
+                    }
+                ]
+            },
+            {
+                "id": "region",
+                "impact": "moderate",
+                "tags": [
+                    "cat.keyboard",
+                    "best-practice"
+                ],
+                "nodes": [
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"headline margin_spacer\">\n            <span>A 25hours Hotel in<br>every cool city.</span>\n        </div>",
+                        "target": [
+                            ".headline.margin_spacer"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"text_module_two_boxes margin_spacer module_wrapper\">",
+                        "target": [
+                            ".text_module_two_boxes"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"text_module margin_spacer module_wrapper\">",
+                        "target": [
+                            ".text_module.margin_spacer.module_wrapper:nth-child(17)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"text_module margin_spacer module_wrapper\">",
+                        "target": [
+                            ".text_module.margin_spacer.module_wrapper:nth-child(20)"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"teaser_3boxes margin_spacer module_wrapper\">",
+                        "target": [
+                            ".teaser_3boxes"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<h2 class=\"serif_line\">Now we are talking.</h2>",
+                        "target": [
+                            "h2"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"running_text_redesign\"><p>Besondere Einblicke in die Welt von 25hours und aktuelle News.</p></div>",
+                        "target": [
+                            ".newsletter > .running_text_redesign"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<input type=\"text\" class=\"newsletter_email\" name=\"newsletter_email\" value=\"\" placeholder=\"E-Mail Address\">",
+                        "target": [
+                            ".newsletter_email"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<div class=\"big_teaser margin_spacer module_wrapper\">",
+                        "target": [
+                            ".big_teaser"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<a class=\"back-to-top js-back-to-top\">\n            <svg><use xlink:href=\"#copyright\"></use></svg><br>\n            back to<br>top\n        </a>",
+                        "target": [
+                            ".back-to-top"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    },
+                    {
+                        "any": [
+                            {
+                                "id": "region",
+                                "data": {
+                                    "isIframe": false
+                                },
+                                "impact": "moderate"
+                            }
+                        ],
+                        "impact": "moderate",
+                        "html": "<img style=\"width:20px; height:20px;\" class=\"cmpboxrecallicon\" width=\"20\" height=\"20\" alt=\"Privacy settings\" title=\"Privacy settings\" src=\"https://cdn.consentmanager.net/delivery/recall/recall_shield.svg\" loading=\"lazy\">",
+                        "target": [
+                            ".cmpboxrecallicon"
+                        ],
+                        "failureSummary": "Fix any of the following:\n  Some page content is not contained by landmarks"
+                    }
+                ]
+            }
+        ],
+        "PassesCount": 46,
+        "IncompleteCount": 3,
+        "ViolationsCount": 15,
+        "InapplicableCount": 39
+    },
+    "externalJavascript": [
+        "https://b.delivery.consentmanager.net/delivery/cmp.php?&cdid=66b39a7551cb&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&o=1681328748706",
+        "https://cdn.consentmanager.net/delivery/js/cmp_en.min.js",
+        "/layout/js/jquery-1.11.1.min.js",
+        "/layout/js/plugins.js",
+        "/layout/js/main.js?v004",
+        "/layout/js/modernizr.js",
+        "https://b.delivery.consentmanager.net/delivery/cmp.php?__cmpcc=1&id=15481&o=1681328749&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&odw=0&dlt=1&l=en",
+        "https://b.delivery.consentmanager.net/delivery/cmp.php?__cmpcc=2&__cmpfcc=1&id=15481&o=1681328749&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&odw=0&dlt=1&l=en",
+        "https://cdn.consentmanager.net/delivery/customdata/bV8xLndfMTU0ODEuZF82MjI3LnhfMTAwLnYucC50XzYyMjcueHRfMTAw.js"
+    ],
+    "externalCSS": [
+        "/layout/css/typo.css",
+        "/layout/css/styles.css??65151",
+        "/layout/css/print.css?"
+    ],
+    "images": [
+        {
+            "alt": "consentmanager.net",
+            "src": "https://cdn.consentmanager.net/delivery/cmplogo.svg"
+        },
+        {
+            "alt": "Language: en",
+            "src": "//cdn.consentmanager.net/delivery/flags/en.gif"
+        },
+        {
+            "alt": "25hours hotels logo",
+            "src": "/layout/images/logo.svg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_trip_stephanlemke_lobby_medium_5-7_0078c6002a821c63f87468.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_zurichwest_stephanlemke_small_lounge_1st_floor_medium_0064b5012a821c63f87475.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_paris_steveherud_lobby_medium_4-7_09b96f7802a821c63f873ae.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_central_ingridrasmussen_lobby_medium_023522651b582a821c63f873ef.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_circle_steveherud_lobby_medium_13_0ee96f7802a821c63f87400.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_goldman_stephanlemke_rooms_east_l_medium_1-2_0a16b55552a821c63f87408.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_bikini_stephanlemke_lobby_medium_2_0c76b75562a821c63f87410.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_hafenamt_stephanlemke_neni_hamburg_medium_9-2_0078c6002a821c63f8741a.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_hafencity_stephanlemke_lobby_medium_1_00b0e8ca2a821c63f87423.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_indreby_stephanlemke_lobby_3000x-1_00b0e8ca2a821c63f8742d.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_langstrasse_andreadiglas_lobby_medium_2-4_01556ad54e2a821c63f8743c.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_museumsquartier_stephanlemke_rooms_medium_medium_1_0996c35602a821c63f87445.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_piazzapaolino_dariogarofalo_rooms_m_paradiso_balcony_medium_1-1_06596f7802a821c63f8744f.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_royalbavarian_steveherud_reception_medium_7_013ea108002a821c63f87458.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_tour_steveherud_lobby_flowershop_medium_1-2_0986b55552a821c63f87460.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_trip_stephanlemke_lobby_medium_5-7_0078c6002a821c63f87468.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_zurichwest_stephanlemke_small_lounge_1st_floor_medium_0064b5012a821c63f87475.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_paris_steveherud_lobby_medium_4-7_09b96f7802a821c63f873ae.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_central_ingridrasmussen_lobby_medium_023522651b582a821c63f873ef.jpg"
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": null
+        },
+        {
+            "alt": "",
+            "src": "/layout/images/companion_logo.svg"
+        },
+        {
+            "alt": "",
+            "src": "/images/img_3163_17404624641cc1cc638eeec8.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/events-2_3180a00a041cc1cc6388c7e9.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/guide-1_3f07447461cc1cc6388c883.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/images/25h_hafencity_heimat_volkerwenzlawski_medium_132_1090800209578163637f71e1.jpg"
+        },
+        {
+            "alt": "",
+            "src": "/layout/images/home-redesign-button.svg"
+        },
+        {
+            "alt": "",
+            "src": "/layout/images/home-redesign-logo.svg"
+        },
+        {
+            "alt": "Privacy settings",
+            "src": "https://cdn.consentmanager.net/delivery/recall/recall_shield.svg"
+        }
+    ],
+    "date": 1681328751568,
+    "filename": "25hours-hotels.com",
+    "alinks": [
+        {
+            "href": "https://www.25hours-hotels.com/en/rechtliches/privacy-policy#cmpnoscreen",
+            "textContent": "Privacy notice"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/en/rechtliches/legal-notice#cmpnoscreen",
+            "textContent": "Legal notice"
+        },
+        {
+            "href": "https://www.consentmanager.net/?utm_source=cmplogo&utm_medium=banner&utm_campaign=cmplogo&utm_term=15481",
+            "textContent": "consentmanager.net"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels",
+            "textContent": "Hotels"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/berlin",
+            "textContent": "Berlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/dubai",
+            "textContent": "Dubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/duesseldorf",
+            "textContent": "Düsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/florenz",
+            "textContent": "Florenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/frankfurt",
+            "textContent": "Frankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/hamburg",
+            "textContent": "Hamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/kopenhagen",
+            "textContent": "Kopenhagen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/koeln",
+            "textContent": "Köln"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/muenchen",
+            "textContent": "München"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/paris",
+            "textContent": "Paris"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/wien",
+            "textContent": "Wien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich",
+            "textContent": "Zürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars",
+            "textContent": "Restaurants & Bars"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/berlin",
+            "textContent": "Berlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/dubai",
+            "textContent": "Dubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/duesseldorf",
+            "textContent": "Düsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/florenz",
+            "textContent": "Florenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/frankfurt",
+            "textContent": "Frankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/hamburg",
+            "textContent": "Hamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/kopenhagen",
+            "textContent": "Kopenhagen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/koeln",
+            "textContent": "Köln"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/muenchen",
+            "textContent": "München"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/paris",
+            "textContent": "Paris"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/wien",
+            "textContent": "Wien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars/zuerich",
+            "textContent": "Zürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events",
+            "textContent": "Meetings & Events"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/berlin",
+            "textContent": "Berlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/dubai",
+            "textContent": "Dubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/duesseldorf",
+            "textContent": "Düsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/florenz",
+            "textContent": "Florenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/frankfurt",
+            "textContent": "Frankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/hamburg",
+            "textContent": "Hamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/koeln",
+            "textContent": "Köln"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/kopenhagen",
+            "textContent": "Kopenhagen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/muenchen",
+            "textContent": "München"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/paris",
+            "textContent": "Paris"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/wien",
+            "textContent": "Wien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/meetings-events/zuerich",
+            "textContent": "Zürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/vouchers",
+            "textContent": "Vouchers"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/companion",
+            "textContent": "Companion"
+        },
+        {
+            "href": "https://www.25hours-hotels.com",
+            "textContent": ""
+        },
+        {
+            "href": "",
+            "textContent": "Deutsch"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/en",
+            "textContent": "English"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/fr",
+            "textContent": "Français"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/it",
+            "textContent": "Italiano"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/dansk",
+            "textContent": "Dansk"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/muenchen",
+            "textContent": "München"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/paris",
+            "textContent": "Paris"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/wien",
+            "textContent": "Wien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich",
+            "textContent": "Zürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/berlin",
+            "textContent": "Berlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/dubai",
+            "textContent": "Dubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/duesseldorf",
+            "textContent": "Düsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/florenz",
+            "textContent": "Florenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/frankfurt",
+            "textContent": "Frankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/hamburg",
+            "textContent": "Hamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/koeln",
+            "textContent": "Köln"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/kopenhagen",
+            "textContent": "Kopenhagen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/muenchen",
+            "textContent": "München"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/paris",
+            "textContent": "Paris"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/wien",
+            "textContent": "Wien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich",
+            "textContent": "Zürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/berlin",
+            "textContent": "Berlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/dubai",
+            "textContent": "Dubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/duesseldorf",
+            "textContent": "Düsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/florenz",
+            "textContent": "Florenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/frankfurt/the-trip",
+            "textContent": "25hours Hotel The Trip\t\t\t\t\t\t\tFrankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich/zuerich-west",
+            "textContent": "25hours Hotel Zürich West\t\t\t\t\t\t\tZürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/paris/terminus-nord",
+            "textContent": "25hours Hotel Terminus Nord\t\t\t\t\t\t\tParis"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/dubai/one-central",
+            "textContent": "25hours Hotel One Central\t\t\t\t\t\t\tDubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/koeln/the-circle",
+            "textContent": "25hours Hotel The Circle\t\t\t\t\t\t\tKöln"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/frankfurt/the-goldman",
+            "textContent": "25hours Hotel The Goldman\t\t\t\t\t\t\tFrankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/berlin/bikini-berlin",
+            "textContent": "25hours Hotel Bikini Berlin\t\t\t\t\t\t\tBerlin"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/hamburg/altes-hafenamt",
+            "textContent": "25hours Hotel Altes Hafenamt\t\t\t\t\t\t\tHamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/hamburg/hafencity",
+            "textContent": "25hours Hotel HafenCity\t\t\t\t\t\t\tHamburg"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/kopenhagen/indre-by",
+            "textContent": "25hours Hotel Indre By\t\t\t\t\t\t\tKopenhagen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich/langstrasse",
+            "textContent": "25hours Hotel Langstrasse\t\t\t\t\t\t\tZürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/wien/museumsquartier",
+            "textContent": "25hours Hotel beim MuseumsQuartier\t\t\t\t\t\t\tWien"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/florenz/piazza-san-paolino",
+            "textContent": "25hours Hotel Piazza San Paolino\t\t\t\t\t\t\tFlorenz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/muenchen/the-royal-bavarian",
+            "textContent": "25hours Hotel The Royal Bavarian\t\t\t\t\t\t\tMünchen"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/duesseldorf/das-tour",
+            "textContent": "25hours Hotel Das Tour\t\t\t\t\t\t\tDüsseldorf"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/frankfurt/the-trip",
+            "textContent": "25hours Hotel The Trip\t\t\t\t\t\t\tFrankfurt"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/zuerich/zuerich-west",
+            "textContent": "25hours Hotel Zürich West\t\t\t\t\t\t\tZürich"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/paris/terminus-nord",
+            "textContent": "25hours Hotel Terminus Nord\t\t\t\t\t\t\tParis"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/hotels/dubai/one-central",
+            "textContent": "25hours Hotel One Central\t\t\t\t\t\t\tDubai"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/restaurants-bars",
+            "textContent": "Übersicht unserer Restaurants & Bars"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/shop-voucher/gutscheine",
+            "textContent": "jetzt KAUFEN"
+        },
+        {
+            "href": "https://www.25hours-companion.com",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.25hours-companion.com/en/journal",
+            "textContent": "Journal"
+        },
+        {
+            "href": "https://www.25hours-companion.com/en/events",
+            "textContent": "Events"
+        },
+        {
+            "href": "https://www.25hours-companion.com/en/guide",
+            "textContent": "Guide"
+        },
+        {
+            "href": "https://www.25hours-people.com/jobs",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.25hours-people.com/",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.facebook.com/25hoursHotels/",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.instagram.com/25hourshotels/",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.youtube.com/user/25hourshotels",
+            "textContent": ""
+        },
+        {
+            "href": "https://www.25hours-hotels.com/rechtliches/impressum",
+            "textContent": "Impressum"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/rechtliches/datenschutz",
+            "textContent": "Datenschutz"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/25hours-people",
+            "textContent": "25hours People"
+        },
+        {
+            "href": "https://www.25hours-people.com/jobs",
+            "textContent": "Jobs"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/loyalty",
+            "textContent": "Loyalty"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/company",
+            "textContent": "Company"
+        },
+        {
+            "href": "https://www.25hours-hotels.com/kontakt",
+            "textContent": "Kontakt"
+        }
+    ],
+    "cookies": [
+        {
+            "name": "__cmpcvcx15481",
+            "value": "__c5123_s23_c27150_s982__",
+            "domain": ".www.25hours-hotels.com",
+            "path": "/",
+            "expires": 1682538350,
+            "size": 39,
+            "httpOnly": false,
+            "secure": true,
+            "session": false,
+            "sameSite": "None",
+            "sameParty": false,
+            "sourceScheme": "Secure",
+            "sourcePort": 443
+        },
+        {
+            "name": "__cmpcpcx15481",
+            "value": "__51__",
+            "domain": ".www.25hours-hotels.com",
+            "path": "/",
+            "expires": 1682538350,
+            "size": 20,
+            "httpOnly": false,
+            "secure": true,
+            "session": false,
+            "sameSite": "None",
+            "sameParty": false,
+            "sourceScheme": "Secure",
+            "sourcePort": 443
+        },
+        {
+            "name": "__cmpcc",
+            "value": "1",
+            "domain": "www.25hours-hotels.com",
+            "path": "/",
+            "expires": 1715456749,
+            "size": 8,
+            "httpOnly": false,
+            "secure": true,
+            "session": false,
+            "sameSite": "None",
+            "sameParty": false,
+            "sourceScheme": "Secure",
+            "sourcePort": 443
+        }
+    ],
+    "totalTimeMillis": 6624,
+    "technologies": [
+        {
+            "slug": "cart-functionality",
+            "name": "Cart Functionality",
+            "confidence": 100,
+            "version": null,
+            "website": "https://www.wappalyzer.com/technologies/ecommerce/cart-functionality",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 6,
+                    "slug": "ecommerce",
+                    "name": "Ecommerce"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "videojs",
+            "name": "VideoJS",
+            "confidence": 100,
+            "version": "6.2.0",
+            "website": "http://videojs.com",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 14,
+                    "slug": "video-players",
+                    "name": "Video players"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "nginx",
+            "name": "Nginx",
+            "confidence": 100,
+            "version": null,
+            "website": "http://nginx.org/en",
+            "cpe": "cpe:2.3:a:nginx:nginx:*:*:*:*:*:*:*:*",
+            "categories": [
+                {
+                    "id": 22,
+                    "slug": "web-servers",
+                    "name": "Web servers"
+                },
+                {
+                    "id": 64,
+                    "slug": "reverse-proxies",
+                    "name": "Reverse proxies"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "modernizr",
+            "name": "Modernizr",
+            "confidence": 100,
+            "version": null,
+            "website": "https://modernizr.com",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 59,
+                    "slug": "javascript-libraries",
+                    "name": "JavaScript libraries"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "google-tag-manager",
+            "name": "Google Tag Manager",
+            "confidence": 100,
+            "version": null,
+            "website": "http://www.google.com/tagmanager",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 42,
+                    "slug": "tag-managers",
+                    "name": "Tag managers"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "select2",
+            "name": "Select2",
+            "confidence": 100,
+            "version": null,
+            "website": "https://select2.org/",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 59,
+                    "slug": "javascript-libraries",
+                    "name": "JavaScript libraries"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "moment-js",
+            "name": "Moment.js",
+            "confidence": 100,
+            "version": "2.22.0",
+            "website": "https://momentjs.com",
+            "cpe": "cpe:2.3:a:momentjs:moment:*:*:*:*:*:*:*:*",
+            "categories": [
+                {
+                    "id": 59,
+                    "slug": "javascript-libraries",
+                    "name": "JavaScript libraries"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "jquery-ui",
+            "name": "jQuery UI",
+            "confidence": 100,
+            "version": "1.12.1",
+            "website": "http://jqueryui.com",
+            "cpe": "cpe:2.3:a:jquery:jquery_ui:*:*:*:*:*:*:*:*",
+            "categories": [
+                {
+                    "id": 59,
+                    "slug": "javascript-libraries",
+                    "name": "JavaScript libraries"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "jquery",
+            "name": "jQuery",
+            "confidence": 100,
+            "version": "1.11.1",
+            "website": "https://jquery.com",
+            "cpe": "cpe:2.3:a:jquery:jquery:*:*:*:*:*:*:*:*",
+            "categories": [
+                {
+                    "id": 59,
+                    "slug": "javascript-libraries",
+                    "name": "JavaScript libraries"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "domainfactory",
+            "name": "DomainFactory",
+            "confidence": 100,
+            "version": null,
+            "website": "https://www.df.eu",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 88,
+                    "slug": "hosting",
+                    "name": "Hosting"
+                }
+            ],
+            "rootPath": true
+        },
+        {
+            "slug": "open-graph",
+            "name": "Open Graph",
+            "confidence": 100,
+            "version": null,
+            "website": "https://ogp.me",
+            "cpe": null,
+            "categories": [
+                {
+                    "id": 19,
+                    "slug": "miscellaneous",
+                    "name": "Miscellaneous"
+                }
+            ],
+            "rootPath": true
+        }
+    ],
+    "@context": "http://luiscarvalho.dev/contexts/",
+    "@type": "pageReport",
+    "jsCoverage": [
+        {
+            "url": "https://www.25hours-hotels.com/",
+            "type": "js",
+            "usedBytes": 4237,
+            "totalBytes": 10380,
+            "percentUsed": "40.82%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/js/jquery-1.11.1.min.js",
+            "type": "js",
+            "usedBytes": 54296,
+            "totalBytes": 95786,
+            "percentUsed": "56.68%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/js/plugins.js",
+            "type": "js",
+            "usedBytes": 140083,
+            "totalBytes": 505945,
+            "percentUsed": "27.69%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/js/main.js?v004",
+            "type": "js",
+            "usedBytes": 29723,
+            "totalBytes": 91083,
+            "percentUsed": "32.63%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/js/modernizr.js",
+            "type": "js",
+            "usedBytes": 799,
+            "totalBytes": 1526,
+            "percentUsed": "52.36%"
+        },
+        {
+            "url": "https://b.delivery.consentmanager.net/delivery/cmp.php?&cdid=66b39a7551cb&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&o=1681328748706",
+            "type": "js",
+            "usedBytes": 705,
+            "totalBytes": 868,
+            "percentUsed": "81.22%"
+        },
+        {
+            "url": "https://cdn.consentmanager.net/delivery/js/cmp_en.min.js",
+            "type": "js",
+            "usedBytes": 204888,
+            "totalBytes": 495273,
+            "percentUsed": "41.37%"
+        },
+        {
+            "url": "https://b.delivery.consentmanager.net/delivery/cmp.php?__cmpcc=1&id=15481&o=1681328749&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&odw=0&dlt=1&l=en",
+            "type": "js",
+            "usedBytes": 528,
+            "totalBytes": 868,
+            "percentUsed": "60.83%"
+        },
+        {
+            "url": "https://b.delivery.consentmanager.net/delivery/cmp.php?__cmpcc=2&__cmpfcc=1&id=15481&o=1681328749&h=https%3A%2F%2Fwww.25hours-hotels.com%2F&&l=en&odw=0&dlt=1&l=en",
+            "type": "js",
+            "usedBytes": 4489,
+            "totalBytes": 4759,
+            "percentUsed": "94.33%"
+        },
+        {
+            "url": "https://cdn.consentmanager.net/delivery/customdata/bV8xLndfMTU0ODEuZF82MjI3LnhfMTAwLnYucC50XzYyMjcueHRfMTAw.js",
+            "type": "js",
+            "usedBytes": 24540,
+            "totalBytes": 38807,
+            "percentUsed": "63.24%"
+        }
+    ],
+    "cssCoverage": [
+        {
+            "url": "https://www.25hours-hotels.com/layout/css/styles.css??65151",
+            "type": "css",
+            "usedBytes": 31096,
+            "totalBytes": 375001,
+            "percentUsed": "8.29%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/css/print.css?",
+            "type": "css",
+            "usedBytes": 0,
+            "totalBytes": 97,
+            "percentUsed": "0.00%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/",
+            "type": "css",
+            "usedBytes": 213,
+            "totalBytes": 236,
+            "percentUsed": "90.25%"
+        },
+        {
+            "url": "https://fast.fonts.net/t/1.css?apiType=css&projectid=6dc38d65-4bb8-4064-a6e3-3f0ba7e8200b",
+            "type": "css",
+            "usedBytes": 0,
+            "totalBytes": 0,
+            "percentUsed": "NaN%"
+        },
+        {
+            "url": "https://www.25hours-hotels.com/layout/css/typo.css",
+            "type": "css",
+            "usedBytes": 0,
+            "totalBytes": 2968,
+            "percentUsed": "0.00%"
+        }
+    ]
+}

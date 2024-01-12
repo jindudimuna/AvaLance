@@ -18,15 +18,27 @@ async function navigateZip(zipFilePath, pagefunction) {
         let domain = splitBySlash[1];
         let url = splitBySlash[2];
         
-        let report = await zip.entryData(entry + '.jsonld');
+        let report;
+        try {
+        report = await zip.entryData(entry + '.jsonld');
         report = JSON.parse(report.toString('utf8'));
-        
-        let html = await zip.entryData(entry + '.html');
-        html = html.toString('utf8');
+        } catch(e) {
+            console.log(e)
+            console
+        }
 
+
+        let html
+        try {
+            html = await zip.entryData(entry + '.html');
+            html = html.toString('utf8');
+        } catch(e) {
+            console.log(e)
+            continue
+        }
+
+    
         await pagefunction(domain, url, html, report);
-
-        return;
     }
     await zip.close();
 }
