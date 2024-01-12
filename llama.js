@@ -17,11 +17,11 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 
   llamaConnector.setTemperature(0.5);
 
-  async function whatToDoPerPage(domain, url,html, report) {
+  async function whatToDoPerPage(domain, url, html, report) {
     /**
      * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
      */
-    const pagePath = actions.createPageFolder(url);    
+    const pagePath = actions.createPageFolder(url);
 
     actions.saveHtmlFromZip(pagePath, html);
 
@@ -31,17 +31,16 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
      * prepare the data for llama, format it to the json format we ant to pass in to llama
      */
 
-    const nodesString = requestData.accessibility.violations
-      .flatMap((error) => {
-        const errorId = error.id;
-        return error.nodes.map((node) => {
-          return {
-            'id': errorId,
-            'html': node.html,
-            'failureSummary': node.failureSummary,
-          } 
-        });
+    const nodesString = requestData.accessibility.violations.flatMap((error) => {
+      const errorId = error.id;
+      return error.nodes.map((node) => {
+        return {
+          id: errorId,
+          html: node.html,
+          failureSummary: node.failureSummary,
+        };
       });
+    });
 
     let finalBarriers = [];
 
@@ -79,8 +78,6 @@ const accessibilityAnalyser = require("./accessibilityAnalyser.js");
     }
 
     actions.saveAllInstructions(pagePath, finalBarriers);
-
-    return;
 
     //close the lop here
 
