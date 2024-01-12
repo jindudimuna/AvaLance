@@ -44,16 +44,24 @@ async function waitForModelToBeRunning() {
   llamaConnector.setTemperature(0.5);
 
   async function whatToDoPerPage(domain, url,html, report) {
+
+    if(domain != url) {
+      return;
+    }
+
     console.log("On page:", url)
     /**
      * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
      */
     const pagePath = actions.createPageFolder(url);
-    
+
+    if(!actions.initialReportExists(pagePath)) {
+      actions.saveInitialReport(pagePath, report);
+    }
+
     if(actions.allFilesExist(pagePath)) {
       return;
     }
-
 
     actions.saveHtmlFromZip(pagePath, html);
 
@@ -63,8 +71,12 @@ async function waitForModelToBeRunning() {
       /**
        * prepare the data for llama, format it to the json format we ant to pass in to llama
        */
+      let nodesString = null;
+      if(requestData == null || requestData.accessibility == null || requestData.accessibility.violations == null) {
+        return;
+      } 
 
-      const nodesString = requestData.accessibility.violations
+      nodesString = requestData.accessibility.violations
         .flatMap((error) => {
           const errorId = error.id;
           return error.nodes.map((node) => {
@@ -134,6 +146,7 @@ async function waitForModelToBeRunning() {
 
         finalBarriers.push(updatedResult);
 
+        await delay(5000)
       }
 
       actions.saveAllInstructions(pagePath, finalBarriers);
@@ -158,10 +171,14 @@ async function waitForModelToBeRunning() {
      */
 
     const outputPath = path.join(pagePath, "output.html")
-    const evaluation = await accessibilityAnalyser.analyzeFile(outputPath);
-    //console.log(evaluation);
 
-    actions.saveReport(pagePath, evaluation);
+    try {
+      const evaluation = await accessibilityAnalyser.analyzeFile(outputPath);
+      //console.log(evaluation);
+      actions.saveReport(pagePath, evaluation);
+    } catch(e) {
+      console.log(e)
+    }
   }
 
   await accessibilityAnalyser.initBrowser();

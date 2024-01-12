@@ -306,6 +306,11 @@ function allFilesExist(folderPath) {
   fs.existsSync(reportPath) && fs.existsSync(sourcePath);
 }
 
+function initialReportExists(folderPath) {
+  const filePath = path.join(folderPath, "initialReport.json")
+  return fs.existsSync(filePath)
+}
+
 function saveHtmlFromZip(folderPath, htmlZip) {
   /*
   save the extracted html into a new file
@@ -320,6 +325,14 @@ function saveReport(folderPath, report) {
   save the report into a new file
   */
   const filePath = path.join(folderPath, 'report.json'); 
+  fs.writeFileSync(filePath, JSON.stringify(report));
+}
+
+function saveInitialReport(folderPath, report) {
+  /*
+  save the report into a new file
+  */
+  const filePath = path.join(folderPath, 'initialReport.json'); 
   fs.writeFileSync(filePath, JSON.stringify(report));
 }
 
@@ -385,5 +398,7 @@ module.exports = {
   saveAllInstructions,
   saveReport,
   instructionsFileExists,
-  allFilesExist
+  allFilesExist,
+  initialReportExists,
+  saveInitialReport
 };
