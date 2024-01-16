@@ -218,16 +218,16 @@ async function analysis(report, is_new) {
   const avgCsv = averages.map((entry) => `${entry.webpage},${entry.reportType},${entry.averageScore}`).join("\n");
 
   // Append data to the file
-  // csvWriter.appendFileSync("./analysis/averages.csv", `\n ${avgCsv}`);
+  csvWriter.appendFileSync("./analysis/averages.csv", `\n ${avgCsv}`);
 
-  // console.log('CSV file "averages.csv" written successfully.');
+  console.log('CSV file "averages.csv" written successfully.');
 
   // console.log(nodesArray);
   // console.log(`number of errors on this page :  ${nodesArray.length}`);
   const csvData = nodesArray.map((node) => ` ${node.webpage},${node.id},${node.impact},${node.impactScore}, ${node.reportType}`).join("\n");
 
   // Write CSV string to a file
-  // csvWriter.appendFileSync("./analysis/report.csv", `\n ${csvData}`);
+  csvWriter.appendFileSync("./analysis/report.csv", `\n ${csvData}`);
 
-  // console.log(`CSV file 'report.csv' written successfully.`);
+  console.log(`CSV file 'report.csv' written successfully.`);
 }
