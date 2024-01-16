@@ -3,7 +3,7 @@
 
 const fs = require("fs"); // Import file system module from the standard Node.js library
 const jsdom = require("jsdom");
-const path = require('path');
+const path = require("path");
 
 // Path to asset directory
 const ASSET_DIR_PATH = "./assets";
@@ -31,7 +31,7 @@ function getInstructionList(folderPath) {
     If it's not valid or the file is not found, an error will be thrown and the process will exit.
   */
 
-  const instructionFilePath = path.join(folderPath, 'instructions.json')
+  const instructionFilePath = path.join(folderPath, "instructions.json");
   try {
     const instructionList = JSON.parse(
       // Read the file at the given path and convert the content to its string representation for easy parsing
@@ -189,29 +189,10 @@ function saveModifiedHtml(folderPath, cleanedFile) {
   /*
   save the new output into a new file
   */
-  const filePath = path.join(folderPath, 'output.html')
+  const filePath = path.join(folderPath, "output.html");
 
   fs.writeFileSync(filePath, cleanedFile);
 }
-
-/*
-  This is the main function of this entry file.
-
-  It is an Immediately Invoked Function Expression (IIFE).
-*/
-// (function main() {
-//   const htmlDoc = getSourceHTMLClean();
-//   const instructionList = getInstructionList();
-//   applyInstructionsToHtmlDoc(instructionList, htmlDoc);
-
-//   saveModifiedHtmlDoc(htmlDoc);
-// })();
-
-/*
-  This is the main function of this entry file.
-
-  It is an Immediately Invoked Function Expression (IIFE).
-*/
 
 /* 
 
@@ -222,7 +203,7 @@ this approach uses the string replacement
 
 function getSourceHTMLClean(folderPath) {
   try {
-    const filePath = path.join(folderPath, 'source.html')
+    const filePath = path.join(folderPath, "source.html");
 
     const rawHtmlString = fs.readFileSync(filePath).toString();
 
@@ -240,13 +221,21 @@ function getSourceHTMLClean(folderPath) {
 }
 
 function insertInstructions(instructionList, cleanedFile) {
-  let cleanedInstructions = instructionList.filter(elem => elem.hasOwnProperty('fixedHtml') && elem.fixedHtml != null && elem.fixedHtml != "" &&
-  elem.hasOwnProperty('html') && elem.html != null && elem.html != "" && 
-  elem.hasOwnProperty('failureSummary') && elem.hasOwnProperty('report'));
+  let cleanedInstructions = instructionList.filter(
+    (elem) =>
+      elem.hasOwnProperty("fixedHtml") &&
+      elem.fixedHtml != null &&
+      elem.fixedHtml != "" &&
+      elem.hasOwnProperty("html") &&
+      elem.html != null &&
+      elem.html != "" &&
+      elem.hasOwnProperty("failureSummary") &&
+      elem.hasOwnProperty("report")
+  );
 
   //remove escape strings from the instructions json object.
   cleanedInstructions = cleanedInstructions.map((instruction) => {
-    console.log(instruction.html)
+    console.log(instruction.html);
     return {
       id: instruction.id,
       html: instruction.html
@@ -289,42 +278,38 @@ function saveModifiedHtml(cleanedFile) {
   fs.writeFileSync(OUTPUT_HTML_PATH, cleanedFile);
 }*/
 
-
 function instructionsFileExists(folderPath) {
   const filePath = path.join(folderPath, "instructions.json");
   return fs.existsSync(filePath);
 }
 
 function allFilesExist(folderPath) {
-  
   const outputPath = path.join(folderPath, "output.html");
   const instructionsPath = path.join(folderPath, "instructions.json");
   const reportPath = path.join(folderPath, "report.json");
   const sourcePath = path.join(folderPath, "source.html");
 
-  return  fs.existsSync(outputPath) && fs.existsSync(instructionsPath) && 
-  fs.existsSync(reportPath) && fs.existsSync(sourcePath);
+  return fs.existsSync(outputPath) && fs.existsSync(instructionsPath) && fs.existsSync(reportPath) && fs.existsSync(sourcePath);
 }
 
 function initialReportExists(folderPath) {
-  const filePath = path.join(folderPath, "initialReport.json")
-  return fs.existsSync(filePath)
+  const filePath = path.join(folderPath, "initialReport.json");
+  return fs.existsSync(filePath);
 }
 
 function saveHtmlFromZip(folderPath, htmlZip) {
   /*
   save the extracted html into a new file
   */
-  const filePath = path.join(folderPath, 'source.html'); 
+  const filePath = path.join(folderPath, "source.html");
   fs.writeFileSync(filePath, htmlZip);
 }
-
 
 function saveReport(folderPath, report) {
   /*
   save the report into a new file
   */
-  const filePath = path.join(folderPath, 'report.json'); 
+  const filePath = path.join(folderPath, "report.json");
   fs.writeFileSync(filePath, JSON.stringify(report));
 }
 
@@ -332,16 +317,14 @@ function saveInitialReport(folderPath, report) {
   /*
   save the report into a new file
   */
-  const filePath = path.join(folderPath, 'initialReport.json'); 
+  const filePath = path.join(folderPath, "initialReport.json");
   fs.writeFileSync(filePath, JSON.stringify(report));
 }
 
 function saveAllInstructions(folderPath, barriers) {
-  const filePath = path.join(folderPath, 'instructions.json');
+  const filePath = path.join(folderPath, "instructions.json");
   fs.writeFileSync(filePath, JSON.stringify(barriers, null, 2));
 }
-
-
 
 function saveInstructions(folderPath, response) {
   /*
@@ -362,28 +345,14 @@ function saveInstructions(folderPath, response) {
 }
 
 function createPageFolder(url) {
-  const pageFolderPath =  path.join('.', OUTPUT_DIR_PATH, url);
-  
-  if(!fs.existsSync(pageFolderPath)) {
+  const pageFolderPath = path.join(".", OUTPUT_DIR_PATH, url);
+
+  if (!fs.existsSync(pageFolderPath)) {
     fs.mkdirSync(pageFolderPath);
   }
 
   return pageFolderPath;
 }
-
-/*
-(function main() {
-  const cleanedFile = getSourceHTMLClean();
-  const instructionList = getInstructionList();
-  let replacedContent = insertInstructions(instructionList, cleanedFile);
-
-  if (!replacedContent) {
-    console.log("no content replaced");
-    return;
-  }
-
-  saveModifiedHtml(replacedContent);
-})();*/
 
 //remove escape strings from the instructions.
 
@@ -400,5 +369,5 @@ module.exports = {
   instructionsFileExists,
   allFilesExist,
   initialReportExists,
-  saveInitialReport
+  saveInitialReport,
 };

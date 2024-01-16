@@ -1,6 +1,6 @@
 const data = require("./zipTraverser");
 const llamaConnector = require("./llamaConnector");
-const actions = require("./index");
+const actions = require("./adapter");
 const accessibilityAnalyser = require("./accessibilityAnalyser.js");
 const { jsonrepair } = require("jsonrepair");
 const path = require("path");
@@ -37,7 +37,10 @@ async function waitForModelToBeRunning() {
       fixedHtml: "",
       report: ""
   }
-  where fixedhtml is the new html you've fixed and your description of the fix is in the report property. I would give you a json snippet that has the html I want you to fix, along with more information about the error, so look at it and only respond in the new json format above. Respond very concisely.
+  where fixedhtml is the new html you've fixed and your description of the fix is in the report property. 
+  I would give you a json snippet that has the html I want you to fix,
+  along with more information about the error, so look at it and only respond in the new json format above. 
+  Respond very concisely.
   `);
 
   llamaConnector.setTemperature(0.5);
@@ -51,6 +54,7 @@ async function waitForModelToBeRunning() {
     /**
      * Process the html content and report data, send the html to the source.html and extract the violations and html we want to pass to llama to fix from the json report
      */
+
     const pagePath = actions.createPageFolder(url);
 
     if (!actions.initialReportExists(pagePath)) {
@@ -88,7 +92,7 @@ async function waitForModelToBeRunning() {
       let finalBarriers = [];
 
       //change this to a loop to select the errors one by one.
-      //open loop here
+
       for (let selectNodes of nodesString) {
         let inputPrompt = JSON.stringify(selectNodes);
         inputPrompt = inputPrompt.replaceAll("\n", "");

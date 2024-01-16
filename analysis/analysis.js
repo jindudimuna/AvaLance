@@ -1,7 +1,6 @@
 const data = require("./zipAnalyis");
-
 const zipFolderPath = "./analysis/zipfiles";
-
+const ss = require("simple-statistics");
 const fs = require("fs").promises;
 const csvWriter = require("fs");
 const path = require("path");
@@ -26,7 +25,7 @@ async function getFilesInFolder(zipFolderPath) {
 }
 
 let result;
-
+const promises = [];
 //this function gets the files returned above and then uses it to call the navigatezip function
 (async () => {
   try {
@@ -36,7 +35,6 @@ let result;
     console.log("Folder path:", result.zipFolderPath);
     console.log("Files in the folder with full paths:");
 
-    // csvWriter.appendFileSync("./analysis/report.csv", `Website, Error ID,Impact,Impact Score,Report Type`);
     const status = hasCsvHeader("./analysis/report.csv", `Website, Error ID,Impact,Impact Score,Report Type`);
 
     if (!status) {
@@ -47,15 +45,48 @@ let result;
     if (!avgStatus) {
       csvWriter.appendFileSync("./analysis/averages.csv", `Website, Report Type, Average`);
     }
-    // console.log(...result.files);
+    result.files.forEach((file) => {
+      promises.push(data.navigateZip(file, analysis));
+    });
+    await Promise.all(promises);
 
-    // result.files.forEach((filePath) => {
-    //   data.navigateZip(filePath, analysis);
+    // [FOR DEVELOPER ONLY] Log the impact scores after all promises are resolved
+    // console.log("Report Impact Scores:", oldImpact, newImpact);
+    // console.log("Old Report Impact Scores length:", oldImpact.length);
+    // console.log("New Report Impact Scores:", newImpact.length);
 
-    //   // .then((response) => {});
-    // });
+    //statistical analysis
+    function calculateWilcoxonPValue(U, n1, n2) {
+      const n = n1 + n2;
+      const mean = (n1 * n2) / 2;
+      const stdDev = Math.sqrt((n1 * n2 * (n + 1)) / 12);
 
-    data.navigateZip(...result.files, analysis);
+      // Calculate the Z statistic
+      const z = (U - mean) / stdDev;
+
+      // Calculate the two-tailed p-value
+      const pValue = 2 * (1 - ss.cumulativeStdNormalProbability(Math.abs(z)));
+
+      return pValue;
+    }
+
+    // Perform the Wilcoxon rank-sum test
+    console.log("Old impact: ", oldImpact);
+    console.log("New impact: ", newImpact);
+    // const ttest = ss.tTestTwoSample(oldImpact, newImpact, 0);
+    // console.log("t-test: ", ttest);
+    const testResult = ss.wilcoxonRankSum(newImpact, oldImpact);
+    const pValue = calculateWilcoxonPValue(testResult, newImpact.length, oldImpact.length);
+    // Display the test result
+    console.log("Wilcoxon Rank-Sum Test Result:");
+    console.log("U statistic:", testResult);
+    console.log("p-value:", pValue);
+
+    if (pValue < 0.05) {
+      console.log("Significant difference detected.");
+    } else {
+      console.log("No significant difference detected.");
+    }
   } catch (error) {
     console.error(error.message);
   }
@@ -137,8 +168,6 @@ async function analysis(report, is_new) {
     });
   }
 
-  const oldReportImpactScores = [];
-  const newReportImpactScores = [];
   /*
       * run another loop to check the impact in each node, if the impact is 'critical' create an impact score property and set it to 4
       if the impact is 'serious' set the impact score property to 3, if the impact is 'moderate' set the impact score property to 2,
@@ -167,8 +196,6 @@ async function analysis(report, is_new) {
     }
   }
 
-  // console.log([...oldImpact, ...newImpact].length);
-
   // Group nodesArray by webpage
   const groupedByWebpage = nodesArray.reduce((acc, node) => {
     const key = `${node.webpage}-${node.reportType}`;
@@ -191,18 +218,16 @@ async function analysis(report, is_new) {
   const avgCsv = averages.map((entry) => `${entry.webpage},${entry.reportType},${entry.averageScore}`).join("\n");
 
   // Append data to the file
-  csvWriter.appendFileSync("./analysis/averages.csv", `\n ${avgCsv}`);
+  // csvWriter.appendFileSync("./analysis/averages.csv", `\n ${avgCsv}`);
 
-  console.log('CSV file "averages.csv" written successfully.');
+  // console.log('CSV file "averages.csv" written successfully.');
 
   // console.log(nodesArray);
   // console.log(`number of errors on this page :  ${nodesArray.length}`);
   const csvData = nodesArray.map((node) => ` ${node.webpage},${node.id},${node.impact},${node.impactScore}, ${node.reportType}`).join("\n");
 
   // Write CSV string to a file
-  csvWriter.appendFileSync("./analysis/report.csv", `\n ${csvData}`);
+  // csvWriter.appendFileSync("./analysis/report.csv", `\n ${csvData}`);
 
-  console.log(`CSV file 'report.csv' written successfully.`);
+  // console.log(`CSV file 'report.csv' written successfully.`);
 }
-
-// analysis of variants, graph the mean and SD of the severity per website.
