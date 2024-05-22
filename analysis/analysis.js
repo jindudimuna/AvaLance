@@ -63,7 +63,7 @@ const promises = [];
 
       // Calculate the Z statistic
       const z = (U - mean) / stdDev;
-
+      console.log("z-value:", z);
       // Calculate the two-tailed p-value
       const pValue = 2 * (1 - ss.cumulativeStdNormalProbability(Math.abs(z)));
 
@@ -75,8 +75,8 @@ const promises = [];
     console.log("New impact: ", newImpact);
     // const ttest = ss.tTestTwoSample(oldImpact, newImpact, 0);
     // console.log("t-test: ", ttest);
-    const testResult = ss.wilcoxonRankSum(newImpact, oldImpact);
-    const pValue = calculateWilcoxonPValue(testResult, newImpact.length, oldImpact.length);
+    const testResult = ss.wilcoxonRankSum(oldImpact, newImpact);
+    const pValue = calculateWilcoxonPValue(testResult, oldImpact.length, newImpact.length);
     // Display the test result
     console.log("Wilcoxon Rank-Sum Test Result:");
     console.log("U statistic:", testResult);
@@ -130,6 +130,7 @@ async function analysis(report, is_new) {
     if (url.startsWith("file:///")) {
       const urlWithoutFilePrefix = url.substring(8); //remove unwanted characters
       const parts = urlWithoutFilePrefix.split("/"); //create an array seperated by the /
+      // console.log(parts); //uncomment to view the array containing the website name.
       return parts[parts.length - 2]; //select the second to the last element
     } else {
       const parts = new URL(url);
