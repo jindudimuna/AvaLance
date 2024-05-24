@@ -77,7 +77,7 @@ async function waitForModelToBeRunning() {
       if (requestData == null || requestData.accessibility == null || requestData.accessibility.violations == null) {
         return;
       }
-
+      //extract the errors from the report.
       nodesString = requestData.accessibility.violations.flatMap((error) => {
         const errorId = error.id;
         return error.nodes.map((node) => {
@@ -91,7 +91,8 @@ async function waitForModelToBeRunning() {
 
       let finalBarriers = [];
 
-      //change this to a loop to select the errors one by one.
+      //loop over the nodestring array to select errors one by one.
+      //these errors would be sent to llama as input.
 
       for (let selectNodes of nodesString) {
         let inputPrompt = JSON.stringify(selectNodes);
